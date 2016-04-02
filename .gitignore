@@ -1,4 +1,6 @@
 node_modules/*
-libs/phaser/*
+libs/*
+
 
 !libs/phaser/build
+!libs/alertify/dist
