@@ -1,0 +1,21 @@
+{
+  "name": "quintal-peleiro",
+  "version": "0.0.1",
+  "authors": [
+    "Judson Silva <judsonbarroso@gmail.com>"
+  ],
+  "description": "A simple game",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "libs/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "phaser": "~2.4.6"
+  }
+}

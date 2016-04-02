@@ -1,0 +1,11 @@
+{
+  "name": "quintal-peleiro",
+  "version": "0.0.1",
+  "description": "A game to observe users perfil",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Judson Silva",
+  "license": "MIT"
+}

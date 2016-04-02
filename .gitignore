@@ -1,0 +1,4 @@
+node_modules/*
+libs/phaser/*
+
+!libs/phaser/build
