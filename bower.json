@@ -16,7 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "alertify.js": "alertifyjs#~1.0.10",
+    "alertify-js": "~1.6.1",
     "phaser": "~2.4.6",
     "underscore": "~1.8.3",
     "underscore.string": "~3.3.4"

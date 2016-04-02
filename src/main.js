@@ -11,7 +11,7 @@ var mainState = {
 		game.load.image('farm-complete', 'assets/granja-completa.jpg');
 		game.load.image('farm', 'assets/granja.png');
 		game.load.image('orchard', 'assets/pomar.png');
-		game.load.image('garden', 'assets/plantacao.png');
+		game.load.image('garden', 'assets/horta.png');
 	},
 
 	create: function(){
@@ -21,10 +21,10 @@ var mainState = {
 		var self = this;
 		// Display the sprites on screen
 		
-		this.farm = game.add.sprite(0, 0, 'farm');
-		this.farm.inputEnabled = true;
-		this.farm.events.onInputDown.add(function(){
-			self.selectOption('farm');
+		this.garden = game.add.sprite(100, 318, 'garden');
+		this.garden.inputEnabled = true;
+		this.garden.events.onInputDown.add(function(){
+			self.selectOption('garden');
 		}, this);
 
 		this.orchard = game.add.sprite(600, 0, 'orchard');
@@ -33,10 +33,11 @@ var mainState = {
 			self.selectOption('orchard');
 		}, this);
 		
-		this.garden = game.add.sprite(100, 318, 'garden');
-		this.garden.inputEnabled = true;
-		this.garden.events.onInputDown.add(function(){
-			self.selectOption('garden');
+		
+		this.farm = game.add.sprite(0, 0, 'farm');
+		this.farm.inputEnabled = true;
+		this.farm.events.onInputDown.add(function(){
+			self.selectOption('farm');
 		}, this);
 		
 		// Create group of menu options
