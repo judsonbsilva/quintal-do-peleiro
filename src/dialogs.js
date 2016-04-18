@@ -10,6 +10,7 @@ if( !UserData.hasName() ) {
 		UserData.saveName(value);
 		alertify.message('Bem vindo fazendeiro ' + value + '!');
 	});
+	
 }
 
 if( !alertify.options ){
@@ -50,7 +51,7 @@ if( !alertify.options ){
 						select: false
 					},
 					options: {
-						title: dialogOptions.title,
+						title: this.settings.title,
 						movable: false,
 						resizable: false
 					}
@@ -70,14 +71,14 @@ if( !alertify.options ){
 					// this.elements.reset[0]       ==> First reset element (button).
 					// this.elements.reset[1]       ==> Second reset element (button).
 					// this.elements.header         ==> Dialog header div
+					
 					var content = "";
-					_.each(dialogOptions.options, function(obj, index){
+					_.each( this.settings.options, function(obj, index){
 						console.log("AHA");
 						content += obj.value + "<br/>";
 					});
 
-					this.elements.content = content;
-
+					this.elements.content.innerHTML = content;
 
 					// this.elements.footer         ==> Dialog footer div
 					// this.elements.resizeHandle   ==> Dialog rezie handle div            
@@ -97,46 +98,50 @@ if( !alertify.options ){
 					// Each created button will be saved with the button definition inside buttons collection
 					// this.__internal.buttons[x].element
 					
-			 },
-			 // This will be called each time the dialog is shown
-				 prepare:function(){
-						 // Do stuff that should be done every time the dialog is shown.
-				 },
-				 // This will be called each time an action button is clicked.
-				 callback:function(closeEvent){
-						//The closeEvent has the following properties
-						//
-						// index: The index of the button triggering the event.
-						// button: The button definition object.
-						// cancel: When set true, prevent the dialog from closing.
-				 },
-				 // To make use of AlertifyJS settings API, group your custom settings into a settings object.
-				 settings:{
-						myProp:'value'
-				 },
-				 // AlertifyJS will invoke this each time a settings value gets updated.
-				 settingUpdated:function(key, oldValue, newValue){
-								 // Use this to respond to specific setting updates.
-								 switch(key){
-										case 'myProp':
-												// Do something when 'myProp' changes
-												break;
-								}
-				 },
-				 // listen to internal dialog events.
-				 hooks:{
-						// triggered when the dialog is shown, this is seperate from user defined onshow
-						onshow: function(){
-						},
-						// triggered when the dialog is closed, this is seperate from user defined onclose
-						onclose: function(){
-						},
-						// triggered when a dialog option gets updated.
-						// IMPORTANT: This will not be triggered for dialog custom settings updates ( use settingUpdated instead).
-						onupdate: function(){
-						}
-				 }
+			},
+			// This will be called each time the dialog is shown
+			prepare:function(){
+				// Do stuff that should be done every time the dialog is shown.
+			},
+				// This will be called each time an action button is clicked.
+			callback:function(closeEvent){
+				//The closeEvent has the following properties
+				//
+				// index: The index of the button triggering the event.
+				// button: The button definition object.
+				// cancel: When set true, prevent the dialog from closing.
+			},
+			// To make use of AlertifyJS settings API, group your custom settings into a settings object.
+			settings:{
+				title:'Título da modal',
+				options: [
+					{ label: 'Opção 1', value: 1 },
+					{ label: 'Opção 2', value: 2 },
+					{ label: 'Opção 3', value: 3 }
+				]
+			},
+			// AlertifyJS will invoke this each time a settings value gets updated.
+			settingUpdated:function(key, oldValue, newValue){
+				// Use this to respond to specific setting updates.
+				switch(key){
+					case 'myProp':
+					// Do something when 'myProp' changes
+					break;
+				}
+			},
+			// listen to internal dialog events.
+			hooks:{
+				// triggered when the dialog is shown, this is seperate from user defined onshow
+				onshow: function(){
+				},
+				// triggered when the dialog is closed, this is seperate from user defined onclose
+				onclose: function(){
+				},
+				// triggered when a dialog option gets updated.
+				// IMPORTANT: This will not be triggered for dialog custom settings updates ( use settingUpdated instead).
+				onupdate: function(){
+				}
+			}
 		}
 	});
-
 }
