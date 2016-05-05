@@ -17,6 +17,7 @@
   ],
   "dependencies": {
     "alertify-js": "~1.6.1",
+    "jquery": "~2.2.3",
     "phaser": "~2.4.6",
     "underscore": "~1.8.3",
     "underscore.string": "~3.3.4"
