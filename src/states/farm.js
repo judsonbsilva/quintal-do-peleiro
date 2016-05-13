@@ -52,7 +52,6 @@ var FarmState = {
 		game.add.sprite(250, 200, 'farm.chickens');
 		game.add.sprite(0, 110, 'farm.items');
 
-		
 	},
 	selectOption: function( name ){
 		alert(name);
