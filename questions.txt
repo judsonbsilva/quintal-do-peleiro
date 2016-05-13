@@ -1,0 +1,93 @@
+var a = {
+  farm: {
+    screen: "Granja",
+    buttons: [
+      {
+        title: "Alimentos",
+        options:[
+          "Ração",
+          "Milho Orgânico",
+          "Restos de Alimentos"
+        ]
+      },
+      {
+        title: "Limpeza",
+        options:[
+          "Usar Baldes",
+          "Mangueiras",
+          "Água Encanada",
+          "Água de Poço"
+        ]
+      },
+      {
+        title: "Luminosidade",
+        options: [
+          "Natural",
+          "Fluorescente",
+          "Incandescente"
+        ]
+      }
+    ]
+  },
+  garden: {
+    screen: "Pomar",
+    buttons: [
+      {
+        title: "Podar",
+        options: [
+          "Lateral",
+          "Copa",
+          "Todas as opções"
+        ]
+      },
+      {
+        title: "Adubar",
+        options: [
+          "Orgânico",
+          "Mineral",
+          "Químico"
+        ]
+      },
+      {
+        title: "Pesticidas",
+        options:
+          [
+          "Sintéticos",
+          "Vegetal",
+          "Inorgânicos"
+          ]
+      }
+    ]
+  },
+  orchard: {
+    screen: "Horta",
+    buttons: [
+      {
+        title: "Arar",
+        options:
+        [
+          "Tratores",
+          "Animais",
+          "Manual"
+        ]
+      },
+      {
+        title: "Plantar",
+        options: [
+          "Sementes",
+          "Mudas Prontas"
+        ]
+      },
+      {
+        title: "Irrigar",
+        options: [
+          "Manual",
+          "Sistema de Irrigação",
+          "Encanado"
+        ]
+      }
+    ]
+  }
+};
+
+console.log(a);

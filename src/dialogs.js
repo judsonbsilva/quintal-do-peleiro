@@ -63,8 +63,9 @@ if( !alertify.options ){
 					// this.elements.reset[0]       ==> First reset element (button).
 					// this.elements.reset[1]       ==> Second reset element (button).
 					// this.elements.header         ==> Dialog header div
-					$(this.elements.content)
-					console.log("HERE", this.elements.content);
+					$(this.elements.content).on('click', 'input', function(){
+						console.log(this, arguments);
+					});
 
 
 					// this.elements.footer         ==> Dialog footer div
@@ -152,7 +153,7 @@ if( !alertify.options ){
 
 
 if( !UserData.hasName() ) {
-
+	/*
 	alertify.prompt('Digite seu nome').setting({
 		closable: false,
 		maximizable: false,
@@ -172,5 +173,5 @@ if( !UserData.hasName() ) {
 			alertify.message("Deu certo!");
 		});
 	});
-
+	*/
 }
