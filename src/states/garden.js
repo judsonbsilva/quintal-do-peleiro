@@ -12,6 +12,10 @@ var GardenState = {
 		game.load.image('garden.ground.1', 'assets/horta/ground1.png');
 		game.load.image('garden.ground.2', 'assets/horta/ground2.png');
 		game.load.image('garden.side', 'assets/horta/side.png');
+		game.load.image('menu.background','assets/menu-background.png');
+		game.load.image('menu.button.1', 'assets/horta/button-1.png');
+		game.load.image('menu.button.2', 'assets/horta/button-2.png');
+		game.load.image('menu.button.3', 'assets/horta/button-3.png');
 	},
 
 	create: function(){
@@ -38,7 +42,10 @@ var GardenState = {
 
 		game.add.sprite(0, 390, 'garden.side');
 
-		
+		game.add.sprite(220, 480, 'menu.background');
+		game.add.sprite(250, 490, 'menu.button.1');
+		game.add.sprite(430, 490, 'menu.button.2');
+		game.add.sprite(600, 490, 'menu.button.3');
 	},
 	selectOption: function( name ){
 		alert(name);

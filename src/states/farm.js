@@ -16,6 +16,12 @@ var FarmState = {
 		game.load.image('farm.menu.2', 'assets/granja/menu2.png');
 		game.load.image('farm.menu.3', 'assets/granja/menu3.png');
 		game.load.image('farm.dirt', 'assets/granja/sujo.png');
+
+		game.load.image('menu.background','assets/menu-background.png');
+		game.load.image('menu.button.1', 'assets/granja/button-1.png');
+		game.load.image('menu.button.2', 'assets/granja/button-2.png');
+		game.load.image('menu.button.3', 'assets/granja/button-3.png');
+
 		//game.load.image('orchard', 'assets/inicio/pomar.png');
 		//game.load.image('garden', 'assets/inicio/horta.png');
 	},
@@ -52,6 +58,10 @@ var FarmState = {
 		game.add.sprite(250, 200, 'farm.chickens');
 		game.add.sprite(0, 110, 'farm.items');
 
+		game.add.sprite(220, 480, 'menu.background');
+		game.add.sprite(250, 490, 'menu.button.1');
+		game.add.sprite(430, 490, 'menu.button.2');
+		game.add.sprite(600, 490, 'menu.button.3');
 	},
 	selectOption: function( name ){
 		alert(name);
