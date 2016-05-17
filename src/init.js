@@ -8,15 +8,18 @@ var gameWidth = 960,
 	);
 
 Quintal = {
-	loadAssets: function(spriteName, folder, file){
+	loadSprite: function(spriteName, folder, file){
 		var dir = 'assets/';
 
 		if( !_.isString(file) ) dir += folder;
 		else dir += folder + '/' + file;
 
-		console.log(dir);
-
-		if( _.isString(spriteName) && _.isString(name) && _.isString(file) )
-			game.load.image(spriteName, dir);
+		game.load.image(spriteName, dir);
+	},
+	changeState: function( name ){
+		game.state.start( name );
+	},
+	sprites: {
+		'home.farm': ['inicio', 'home-farm.png']
 	}
-}
+};

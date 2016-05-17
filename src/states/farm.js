@@ -62,9 +62,14 @@ var FarmState = {
 		game.add.sprite(250, 490, 'menu.button.1');
 		game.add.sprite(430, 490, 'menu.button.2');
 		game.add.sprite(600, 490, 'menu.button.3');
-	},
-	selectOption: function( name ){
-		alert(name);
+
+		var back = game.add.sprite(0,0,'back.button');
+		back.inputEnabled = true;
+		back.events.onInputDown.add(function(){
+			game.state.start('home');
+		}, this);
+
+		alertify.message('As galinhas estão famintas');
 	},
 	// Restart the game
 	restartGame: function() {

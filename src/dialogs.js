@@ -153,7 +153,7 @@ if( !alertify.options ){
 
 
 if( !UserData.hasName() ) {
-	/*
+
 	alertify.prompt('Digite seu nome').setting({
 		closable: false,
 		maximizable: false,
@@ -161,17 +161,19 @@ if( !UserData.hasName() ) {
 	}).set('onok',function(event, value){
 		UserData.saveName(value);
 		alertify.message('Bem vindo fazendeiro ' + value + '!');
-		alertify.options({
-			question: 'TESTEEEE',
-			options: [
-				{ value: 'TESSSSS', label:"@$@#%$@#%$" },
-				{ value: '53@@#F@#F', label: "f23f234f23f"}
-			],
-			data: 'test'
-		}).set('onok', function(){
-			console.log("Deuuuu");
-			alertify.message("Deu certo!");
-		});
+		alertify.message('Clique nos botões do menu e se divirta');
+	});
+	/*
+	alertify.options({
+		question: 'TESTEEEE',
+		options: [
+			{ value: 'TESSSSS', label:"@$@#%$@#%$" },
+			{ value: '53@@#F@#F', label: "f23f234f23f"}
+		],
+		data: 'test'
+	}).set('onok', function(){
+		console.log("Deuuuu");
+		alertify.message("Deu certo!");
 	});
 	*/
 }

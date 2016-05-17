@@ -16,6 +16,7 @@ var GardenState = {
 		game.load.image('menu.button.1', 'assets/horta/button-1.png');
 		game.load.image('menu.button.2', 'assets/horta/button-2.png');
 		game.load.image('menu.button.3', 'assets/horta/button-3.png');
+		Quintal.loadSprite('back.button', 'back-button.png');
 	},
 
 	create: function(){
@@ -46,6 +47,14 @@ var GardenState = {
 		game.add.sprite(250, 490, 'menu.button.1');
 		game.add.sprite(430, 490, 'menu.button.2');
 		game.add.sprite(600, 490, 'menu.button.3');
+
+		var back = game.add.sprite(0,0,'back.button');
+		back.inputEnabled = true;
+		back.events.onInputDown.add(function(){
+			game.state.start('home');
+		}, this);
+
+		alertify.message('Que tal dar uma aguada na horta?');
 	},
 	selectOption: function( name ){
 		alert(name);
