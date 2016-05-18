@@ -64,7 +64,7 @@ if( !alertify.options ){
 					// this.elements.reset[1]       ==> Second reset element (button).
 					// this.elements.header         ==> Dialog header div
 					$(this.elements.content).on('click', 'input', function(){
-						console.log(this, arguments);
+						UserData.set(this.name, this.value);
 					});
 
 
@@ -116,7 +116,13 @@ if( !alertify.options ){
 			},
 			callback:function(closeEvent){
 
-				console.log("aqui powrraaa", arguments);
+				console.log(this.settings.data)
+				console.log( UserData.get( this.settings.data ) );
+				UserData.set(
+					'counter',
+					UserData.get('counter') +
+					Number( UserData.get( this.settings.data ) )
+				);
 				//The closeEvent has the following properties
 				//
 				// index: The index of the button triggering the event.

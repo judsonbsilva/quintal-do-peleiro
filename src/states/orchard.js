@@ -37,15 +37,34 @@ var OrchardState = {
 		// Create group of menu options
 		//this.menu = game.add.group();
 		game.add.sprite(220, 480, 'menu.background');
-		game.add.sprite(250, 490, 'menu.button.1');
-		game.add.sprite(430, 490, 'menu.button.2');
-		game.add.sprite(600, 490, 'menu.button.3');
 
-		var back = game.add.sprite(0,0,'back.button');
-		back.inputEnabled = true;
-		back.events.onInputDown.add(function(){
-			game.state.start('home');
-		}, this);
+		Quintal.buttonAction(
+			game.add.sprite(250, 490, 'menu.button.1'),
+			'pomar.veneno',
+			UserData.questions.garden.buttons[2],
+			'Você já colocou pesticidas!'
+		);
+
+		Quintal.buttonAction(
+			game.add.sprite(430, 490, 'menu.button.2'),
+			'pomar.poda',
+			UserData.questions.garden.buttons[0],
+			'Você já podou as árvores!'
+		);
+
+		Quintal.buttonAction(
+			game.add.sprite(600, 490, 'menu.button.3'),
+			'pomar.adubo',
+			UserData.questions.garden.buttons[1],
+			'Você já adubou as árvores!'
+		);
+
+
+		Quintal.onClick(
+			game.add.sprite(0,0,'back.button'), function(){
+				game.state.start('home');
+			}
+		);
 
 		alertify.message('Você poderia adubar as árvores!');
 	}

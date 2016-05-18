@@ -44,15 +44,15 @@ var GardenState = {
 		game.add.sprite(0, 390, 'garden.side');
 
 		game.add.sprite(220, 480, 'menu.background');
-		game.add.sprite(250, 490, 'menu.button.1');
-		game.add.sprite(430, 490, 'menu.button.2');
-		game.add.sprite(600, 490, 'menu.button.3');
+		var button1 = game.add.sprite(250, 490, 'menu.button.1');
+		var button2 = game.add.sprite(430, 490, 'menu.button.2');
+		var button3 = game.add.sprite(600, 490, 'menu.button.3');
 
-		var back = game.add.sprite(0,0,'back.button');
-		back.inputEnabled = true;
-		back.events.onInputDown.add(function(){
-			game.state.start('home');
-		}, this);
+		Quintal.onClick(
+			game.add.sprite(0,0,'back.button'), function(){
+				game.state.start('home');
+			}
+		);
 
 		alertify.message('Que tal dar uma aguada na horta?');
 	},

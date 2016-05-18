@@ -19,6 +19,26 @@ Quintal = {
 	changeState: function( name ){
 		game.state.start( name );
 	},
+	onClick: function( element, action){
+		element.inputEnabled = true;
+		element.events.onInputDown.add(function(){
+			action.call(this, element);
+		}, this);
+	},
+	buttonAction:function(element, dataName, data, message){
+			Quintal.onClick(element, function(){
+				if( !UserData.has(dataName) ){
+					var question = data;
+
+					alertify.options({
+						question: question.title,
+						options: question.options,
+						data: dataName
+					});
+
+				} else alertify.message(message);
+			});
+	},
 	sprites: {
 		'home.farm': ['inicio', 'home-farm.png']
 	}

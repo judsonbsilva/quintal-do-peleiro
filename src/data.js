@@ -1,13 +1,21 @@
 UserData = {
 	affix: 'quintal-game-',
-	storage: {},
+	storage: { counter: 0 },
 	hasName: function(){
-		return this.storage.hasOwnProperty(
-			this.affix + 'name'
-		);
+		return this.storage.hasOwnProperty('name');
 	},
 	saveName: function( name ){
-		this.storage[this.affix + 'name'] = name;
+		this.storage['name'] = name;
+	},
+	set: function( key, value ){
+		this.storage[key] = value;
+	},
+	get: function( key ){
+		if( this.has(key) )
+			return this.storage[key];
+	},
+	has: function( key ){
+		return this.storage.hasOwnProperty( key );
 	},
 	resetAll: function(){
 		this.storage = {};
@@ -17,85 +25,86 @@ UserData = {
 	    screen: 'Granja',
 	    buttons: [
 	      {
+					number: 1,
 	        title: 'Alimentos',
 	        options:[
-	          { name: 'Restos de Alimentos', points: 30},
-						{ name: 'Milho Orgânico', points: 20 },
-						{ name: 'Ração', points: 10 },
+	          { label: 'Restos de Alimentos', value: 30},
+						{ label: 'Milho Orgânico', value: 20 },
+						{ label: 'Ração', value: 10 },
 	        ]
 	      },
 	      {
 	        title: 'Limpeza',
 	        options:[
-						{ name: 'Mangueiras', points: 10 },
-	          { name: 'Água Encanada (Baldes)', points: 20 },
-	          { name: 'Água de Poço', points: 30 }
+						{ label: 'Mangueiras', value: 10 },
+	          { label: 'Água Encanada (Baldes)', value: 20 },
+	          { label: 'Água de Poço', value: 30 }
 	        ]
 	      },
 	      {
 	        title: 'Luminosidade',
 	        options: [
-	          { name: 'Natural', points: 30 },
-	          { name: 'Fluorescente', points: 20 },
-	          { name: 'Incandescente', points: 10 }
-	        ]
-	      }
-	    ]
-	  },
-	  garden: {
-	    screen: 'Pomar',
-	    buttons: [
-	      {
-	        title: 'Podar',
-	        options: [
-	          { name: 'Lateral', points: 30 },
-	          { name: 'Copa', points: 20 },
-	          { name: 'Todas as opções', points: 10 }
-	        ]
-	      },
-	      {
-	        title: 'Adubar',
-	        options: [
-	          { name: 'Orgânico', points: 30 },
-	          { name: 'Mineral', points: 20 },
-	          { name: 'Químico', points: 10 }
-	        ]
-	      },
-	      {
-	        title: 'Pesticidas',
-	        options:[
-		        { name: 'Sintéticos', points: 20 },
-		        { name: 'Vegetal', points: 30 },
-		        { name: 'Inorgânicos', points: 10 }
+	          { label: 'Natural', value: 30 },
+	          { label: 'Fluorescente', value: 20 },
+	          { label: 'Incandescente', value: 10 }
 	        ]
 	      }
 	    ]
 	  },
 	  orchard: {
+	    screen: 'Pomar',
+	    buttons: [
+	      {
+	        title: 'Podar',
+	        options: [
+	          { label: 'Lateral', value: 30 },
+	          { label: 'Copa', value: 20 },
+	          { label: 'Todas as opções', value: 10 }
+	        ]
+	      },
+	      {
+	        title: 'Adubar',
+	        options: [
+	          { label: 'Orgânico', value: 30 },
+	          { label: 'Mineral', value: 20 },
+	          { label: 'Químico', value: 10 }
+	        ]
+	      },
+	      {
+	        title: 'Pesticidas',
+	        options:[
+		        { label: 'Sintéticos', value: 20 },
+		        { label: 'Vegetal', value: 30 },
+		        { label: 'Inorgânicos', value: 10 }
+	        ]
+	      }
+	    ]
+	  },
+	  garden: {
 	    screen: 'Horta',
 	    buttons: [
 	      {
 	        title: 'Arar',
 	        options:
 	        [
-	          { name: 'Tratores', points: 10 },
-	          { name: 'Animais', points: 20 },
-	          { name: 'Manual', points: 30 }
+	          { label: 'Tratores', value: 10 },
+	          { label: 'Animais', value: 20 },
+	          { label: 'Manual', value: 30 }
 	        ]
 	      },
 	      {
 	        title: 'Plantar',
 	        options: [
-	          { name: 'Sementes', points: 30 },
-	          { name: 'Mudas Prontas', points: 20 }
+	          { label: 'Sementes', value: 30 },
+	          { label: 'Mudas Prontas', value: 20 }
 	        ]
 	      },
 	      {
 	        title: 'Irrigar',
 	        options: [
-	          { name: 'Manual', points: 30 },
-	          { name: 'Sistema de Irrigação', points: 20 },
-	          { name: 'Encanado', points: 10 }
+	          { label: 'Manual', value: 30 },
+	          { label: 'Sistema de Irrigação', value: 20 },
+	          { label: 'Encanado', value: 10 }
 	        ]
 	      }
 	    ]

@@ -59,17 +59,37 @@ var FarmState = {
 		game.add.sprite(0, 110, 'farm.items');
 
 		game.add.sprite(220, 480, 'menu.background');
-		game.add.sprite(250, 490, 'menu.button.1');
-		game.add.sprite(430, 490, 'menu.button.2');
+
+		Quintal.buttonAction(
+			game.add.sprite(250, 490, 'menu.button.1'),
+			'granja.alimento',
+			UserData.questions.farm.buttons[0],
+			'Você já alimentou as galinhas'
+		);
+
+		Quintal.buttonAction(
+			game.add.sprite(430, 490, 'menu.button.2'),
+			'granja.iluminacao',
+			UserData.questions.farm.buttons[2],
+			'Você já iluminou o ambiente'
+		);
+
+		Quintal.buttonAction(
+			game.add.sprite(600, 490, 'menu.button.3'),
+			'granja.limpeza',
+			UserData.questions.farm.buttons[1],
+			'Você já limpou o ambiente'
+		);
+
 		game.add.sprite(600, 490, 'menu.button.3');
 
-		var back = game.add.sprite(0,0,'back.button');
-		back.inputEnabled = true;
-		back.events.onInputDown.add(function(){
-			game.state.start('home');
-		}, this);
+		Quintal.onClick(
+			game.add.sprite(0,0,'back.button'), function(){
+				game.state.start('home');
+			}
+		);
 
-		alertify.message('As galinhas estão famintas');
+		alertify.message('As galinhas parecem famintas');
 	},
 	// Restart the game
 	restartGame: function() {
