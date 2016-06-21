@@ -18,6 +18,8 @@ var OrchardState = {
 
 		var self = this;
 
+		this.countQuestions = 0;
+
 		this.treesOption = 0;
 		this.trees = game.add.sprite(0, 0, 'orchard.trees');
 
@@ -40,6 +42,10 @@ var OrchardState = {
 		Quintal.onClick(game.add.sprite(250, 490, 'orchard.button.1'),function(){
 			var data = UserData.questions.orchard.buttons[2];
 
+			if( self.fruitOption != 0 ){
+				alertify.message('Escolha outra opção!');
+				return;
+			}
 			alertify.options({
 				question: data.title,
 				options: data.options,
@@ -47,6 +53,7 @@ var OrchardState = {
 				callback: function(){
 					if( this.settings.option > 0 ){
 						self.fruitOption = 1;
+						self.countQuestions++;
 						alertify.message('As frutas parecem melhores agora não?');
 					}
 					self.showBackButton = false;
@@ -59,6 +66,11 @@ var OrchardState = {
 		Quintal.onClick(game.add.sprite(430, 490, 'orchard.button.2'),function(){
 			var data = UserData.questions.orchard.buttons[0];
 
+			if( self.treesOption != 0 ){
+				alertify.message('Escolha outra opção!');
+				return;
+			}
+
 			alertify.options({
 				question: data.title,
 				options: data.options,
@@ -66,6 +78,7 @@ var OrchardState = {
 				callback: function(){
 					if( this.settings.option > 0 ){
 						self.treesOption = this.settings.option;
+						self.countQuestions++;
 					}
 					self.showBackButton = false;
 				}
@@ -76,6 +89,11 @@ var OrchardState = {
 		Quintal.onClick( game.add.sprite(600, 490, 'orchard.button.3'), function(){
 			var data = UserData.questions.orchard.buttons[1];
 
+			if( self.compostOption != 0 ){
+				alertify.message('Escolha outra opção!');
+				return;
+			}
+
 			alertify.options({
 				question: data.title,
 				options: data.options,
@@ -83,6 +101,7 @@ var OrchardState = {
 				callback: function(){
 					if( this.settings.option > 0 ){
 						self.compostOption = this.settings.option;
+						self.countQuestions++;
 					}
 					self.showBackButton = false;
 				}
@@ -96,6 +115,10 @@ var OrchardState = {
 
 	},
 	update: function(){
+
+		if( this.countQuestions == 3 )
+			this.showBackButton = true;
+
 		if( this.fruitOption == 1 ){
 			this.goodFruit.visible = true;
 			this.badFruit.visible = false;
