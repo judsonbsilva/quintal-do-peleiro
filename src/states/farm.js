@@ -2,25 +2,26 @@ var FarmState = {
 
 	preload: function(){
 		// Load sprites
-		game.load.image('farm.background', 'assets/granja/background.png');
-		game.load.image('farm.items', 'assets/granja/items.png');
-		game.load.image('farm.chickens', 'assets/granja/chickens.png');
-		game.load.image('farm.no.food', 'assets/granja/food0.png');
-		game.load.image('farm.food.1', 'assets/granja/food1.png');
-		game.load.image('farm.food.2', 'assets/granja/food2.png');
-		game.load.image('farm.food.3', 'assets/granja/food3.png');
-		game.load.image('farm.led.1', 'assets/granja/led1.png');
-		game.load.image('farm.led.2', 'assets/granja/led2.png');
-		game.load.image('farm.led.3', 'assets/granja/led3.png');
-		game.load.image('farm.menu.1', 'assets/granja/menu1.png');
-		game.load.image('farm.menu.2', 'assets/granja/menu2.png');
-		game.load.image('farm.menu.3', 'assets/granja/menu3.png');
-		game.load.image('farm.dirt', 'assets/granja/sujo.png');
-
-		game.load.image('menu.background','assets/menu-background.png');
-		game.load.image('menu.button.1', 'assets/granja/button-1.png');
-		game.load.image('menu.button.2', 'assets/granja/button-2.png');
-		game.load.image('menu.button.3', 'assets/granja/button-3.png');
+		Quintal.loadSprites([
+			'farm.background',
+			'farm.items',
+			'farm.chickens',
+			'farm.no.food',
+			'farm.food.1',
+			'farm.food.2',
+			'farm.food.3',
+			'farm.led.1',
+			'farm.led.2',
+			'farm.led.3',
+			'farm.menu.1',
+			'farm.menu.2',
+			'farm.menu.3',
+			'farm.dirt',
+			'menu.background',
+			'farm.button.1',
+			'farm.button.2',
+			'farm.button.3'
+		]);
 
 		//game.load.image('orchard', 'assets/inicio/pomar.png');
 		//game.load.image('garden', 'assets/inicio/horta.png');
@@ -61,30 +62,30 @@ var FarmState = {
 		game.add.sprite(220, 480, 'menu.background');
 
 		Quintal.buttonAction(
-			game.add.sprite(250, 490, 'menu.button.1'),
+			game.add.sprite(250, 490, 'farm.button.1'),
 			'granja.alimento',
 			UserData.questions.farm.buttons[0],
 			'Você já alimentou as galinhas'
 		);
 
 		Quintal.buttonAction(
-			game.add.sprite(430, 490, 'menu.button.2'),
+			game.add.sprite(430, 490, 'farm.button.2'),
 			'granja.iluminacao',
 			UserData.questions.farm.buttons[2],
 			'Você já iluminou o ambiente'
 		);
 
 		Quintal.buttonAction(
-			game.add.sprite(600, 490, 'menu.button.3'),
+			game.add.sprite(600, 490, 'farm.button.3'),
 			'granja.limpeza',
 			UserData.questions.farm.buttons[1],
 			'Você já limpou o ambiente'
 		);
 
-		game.add.sprite(600, 490, 'menu.button.3');
+		game.add.sprite(600, 490, 'farm.button.3');
 
 		Quintal.onClick(
-			game.add.sprite(0,0,'back.button'), function(){
+			game.add.sprite(10,10,'header.back.button'), function(){
 				game.state.start('home');
 			}
 		);

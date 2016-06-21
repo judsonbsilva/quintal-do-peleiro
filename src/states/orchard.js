@@ -1,20 +1,14 @@
 var OrchardState = {
-
+	name: 'orchard',
 	preload: function(){
 		// Change the background color of the game
 		game.stage.backgroundColor = '#159624';
 		// Load sprites
-		game.load.image('orchard.background', 'assets/pomar/background.png');
-		game.load.image('orchard.trees', 'assets/pomar/trees.png');
-		game.load.image('orchard.tree.side', 'assets/pomar/tree-side.png');
-		game.load.image('orchard.tree.top', 'assets/pomar/tree-top.png');
-		game.load.image('orchard.good.fruit', 'assets/pomar/fruit.png');
-		game.load.image('orchard.bad.fruit', 'assets/pomar/fruit-bad.png');
-		game.load.image('menu.background','assets/menu-background.png');
-		game.load.image('menu.button.1', 'assets/pomar/button-1.png');
-		game.load.image('menu.button.2', 'assets/pomar/button-2.png');
-		game.load.image('menu.button.3', 'assets/pomar/button-3.png');
-		Quintal.loadSprite('back.button', 'back-button.png');
+		Quintal.loadSprites([
+			'orchard.background', 'orchard.trees', 'orchard.tree.side', 'orchard.tree.top',
+			'orchard.good.fruit', 'orchard.bad.fruit', 'menu.background', 'orchard.button.1',
+			'orchard.button.2', 'orchard.button.3' ,'header.back.button'
+		]);
 	},
 
 	create: function(){
@@ -39,33 +33,37 @@ var OrchardState = {
 		game.add.sprite(220, 480, 'menu.background');
 
 		Quintal.buttonAction(
-			game.add.sprite(250, 490, 'menu.button.1'),
+			game.add.sprite(250, 490, 'orchard.button.1'),
 			'pomar.veneno',
-			UserData.questions.garden.buttons[2],
+			UserData.questions.orchard.buttons[2],
 			'Você já colocou pesticidas!'
 		);
 
 		Quintal.buttonAction(
-			game.add.sprite(430, 490, 'menu.button.2'),
+			game.add.sprite(430, 490, 'orchard.button.2'),
 			'pomar.poda',
-			UserData.questions.garden.buttons[0],
+			UserData.questions.orchard.buttons[0],
 			'Você já podou as árvores!'
 		);
 
 		Quintal.buttonAction(
-			game.add.sprite(600, 490, 'menu.button.3'),
+			game.add.sprite(600, 490, 'orchard.button.3'),
 			'pomar.adubo',
-			UserData.questions.garden.buttons[1],
+			UserData.questions.orchard.buttons[1],
 			'Você já adubou as árvores!'
 		);
 
 
 		Quintal.onClick(
-			game.add.sprite(0,0,'back.button'), function(){
+			game.add.sprite(10,10,'header.back.button'), function(){
 				game.state.start('home');
 			}
 		);
 
 		alertify.message('Você poderia adubar as árvores!');
+		game.add.text(800, 10, 'FAOFAOSDJFAOFDJFOADF',  {
+			font: 'Bold 30px Arial',
+			fill: '#ffffff'
+		});
 	}
 };

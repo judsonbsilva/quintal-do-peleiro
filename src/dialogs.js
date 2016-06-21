@@ -49,43 +49,10 @@ if( !alertify.options ){
 					}
 				};
 		 	},
-			// This will be called once the dialog DOM has been created, just before its added to the document.
-			// Its invoked only once.
 			build:function(){
-
-					// Do custom DOM manipulation here, accessible via this.elements
-
-					// this.elements.root           ==> Root div
-					// this.elements.dimmer         ==> Modal dimmer div
-					// this.elements.modal          ==> Modal div (dialog wrapper)
-					// this.elements.dialog         ==> Dialog div
-					// this.elements.reset          ==> Array containing the tab reset anchor links
-					// this.elements.reset[0]       ==> First reset element (button).
-					// this.elements.reset[1]       ==> Second reset element (button).
-					// this.elements.header         ==> Dialog header div
 					$(this.elements.content).on('click', 'input', function(){
 						UserData.set(this.name, this.value);
 					});
-
-
-					// this.elements.footer         ==> Dialog footer div
-					// this.elements.resizeHandle   ==> Dialog rezie handle div
-
-					// Dialog commands (Pin/Maximize/Close)
-					// this.elements.commands           ==> Object conatining dialog command buttons references
-					// this.elements.commands.container ==> Root commands div
-					// this.elements.commands.pin       ==> Pin command button
-					// this.elements.commands.maximize  ==> Maximize command button
-					// this.elements.commands.close     ==> Close command button
-
-					// Dialog action buttons (Ok, cancel ... etc)
-					// this.elements.buttons                ==>  Object conatining dialog action buttons references
-					// this.elements.buttons.primary        ==>  Primary buttons div
-					// this.elements.buttons.auxiliary      ==>  Auxiliary buttons div
-
-					// Each created button will be saved with the button definition inside buttons collection
-					// this.__internal.buttons[x].element
-
 			},
 			prepare: function(){
 
@@ -111,18 +78,16 @@ if( !alertify.options ){
 					content.append(document.createElement('br'));
 				});
 
-				console.log(content.get(0));
 				self.setContent(content.get(0));
 			},
 			callback:function(closeEvent){
+				var dataName = this.settings.data,
+						data = Number( UserData.get( dataName )),
+						counter = UserData.get('counter') || 0;
 
-				console.log(this.settings.data)
-				console.log( UserData.get( this.settings.data ) );
-				UserData.set(
-					'counter',
-					UserData.get('counter') +
-					Number( UserData.get( this.settings.data ) )
-				);
+				console.log(dataName, data, counter);
+
+				UserData.set('counter', counter + data );
 				//The closeEvent has the following properties
 				//
 				// index: The index of the button triggering the event.

@@ -4,19 +4,19 @@ var GardenState = {
 		// Change the background color of the game
 		game.stage.backgroundColor = '#159624';
 		// Load sprites
-		game.load.image('garden.background', 'assets/horta/background.png');
-		game.load.image('garden.water.1', 'assets/horta/water1.png');
-		game.load.image('garden.water.2', 'assets/horta/water2.png');
-		game.load.image('garden.plant.1', 'assets/horta/plant1.png');
-		game.load.image('garden.plant.2', 'assets/horta/plant2.png');
-		game.load.image('garden.ground.1', 'assets/horta/ground1.png');
-		game.load.image('garden.ground.2', 'assets/horta/ground2.png');
-		game.load.image('garden.side', 'assets/horta/side.png');
-		game.load.image('menu.background','assets/menu-background.png');
-		game.load.image('menu.button.1', 'assets/horta/button-1.png');
-		game.load.image('menu.button.2', 'assets/horta/button-2.png');
-		game.load.image('menu.button.3', 'assets/horta/button-3.png');
-		Quintal.loadSprite('back.button', 'back-button.png');
+		Quintal.loadSprites([
+			'garden.background',
+			'garden.water.1',
+			'garden.water.2',
+			'garden.plant.1',
+			'garden.plant.2',
+			'garden.ground.1',
+			'garden.ground.2',
+			'garden.side',		'garden.button.1',
+			'garden.button.2',
+			'garden.button.3',
+			'header.back.button'
+		]);
 	},
 
 	create: function(){
@@ -44,12 +44,30 @@ var GardenState = {
 		game.add.sprite(0, 390, 'garden.side');
 
 		game.add.sprite(220, 480, 'menu.background');
-		var button1 = game.add.sprite(250, 490, 'menu.button.1');
-		var button2 = game.add.sprite(430, 490, 'menu.button.2');
-		var button3 = game.add.sprite(600, 490, 'menu.button.3');
+
+		Quintal.buttonAction(
+			game.add.sprite(250, 490, 'garden.button.1'),
+			'horta.plantar',
+			UserData.questions.garden.buttons[1],
+			'Você já plantou!'
+		);
+
+		Quintal.buttonAction(
+			game.add.sprite(430, 490, 'garden.button.2'),
+			'horta.arar',
+			UserData.questions.garden.buttons[0],
+			'Você já arou a terra!'
+		);
+
+		Quintal.buttonAction(
+			game.add.sprite(600, 490, 'garden.button.3'),
+			'horta.aguar',
+			UserData.questions.garden.buttons[2],
+			'Você já aguou!'
+		);
 
 		Quintal.onClick(
-			game.add.sprite(0,0,'back.button'), function(){
+			game.add.sprite(10,0,'header.back.button'), function(){
 				game.state.start('home');
 			}
 		);
