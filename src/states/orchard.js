@@ -111,8 +111,13 @@ var OrchardState = {
 		this.showBackButton = true;
 		HeaderState.create.call(this);
 
+		game.time.events.loop(Phaser.Timer.SECOND, this.updateCounter, this);
+
 		alertify.message('Você poderia adubar as árvores!');
 
+	},
+	updateCounter: function(){
+		console.log(arguments, this, new Date());
 	},
 	update: function(){
 
