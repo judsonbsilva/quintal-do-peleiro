@@ -97,6 +97,11 @@ Quintal = {
 		'orchard.tree.top':   ['pomar','tree-top.png'],
 		'orchard.good.fruit': ['pomar','fruit.png'],
 		'orchard.bad.fruit':  ['pomar','fruit-bad.png'],
+
+		'orchard.compost.1':   ['pomar', 'compost1.png'],
+		'orchard.compost.2':   ['pomar', 'compost2.png'],
+		'orchard.compost.3':   ['pomar', 'compost3.png'],
+
 		'orchard.button.1':   ['pomar', 'button-1.png'],
 		'orchard.button.2':   ['pomar', 'button-2.png'],
 		'orchard.button.3':   ['pomar', 'button-3.png'],
