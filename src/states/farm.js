@@ -84,11 +84,8 @@ var FarmState = {
 
 		game.add.sprite(600, 490, 'farm.button.3');
 
-		Quintal.onClick(
-			game.add.sprite(10,10,'header.back.button'), function(){
-				game.state.start('home');
-			}
-		);
+		this.showBackButton = true;
+		HeaderState.create.call(this);
 
 		alertify.message('As galinhas parecem famintas');
 	},

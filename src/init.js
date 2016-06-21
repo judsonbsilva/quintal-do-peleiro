@@ -40,6 +40,7 @@ Quintal = {
 	},
 	buttonAction:function(element, dataName, data, message){
 			Quintal.onClick(element, function(){
+
 				if( !UserData.has(dataName) ){
 					var question = data;
 
@@ -52,6 +53,13 @@ Quintal = {
 				} else alertify.message(message);
 			});
 	},
+	points: {
+		eggs: 0,
+		fruits: 0,
+		carrots: 0,
+		money: 0
+	},
+
 	sprites: {
 
 		'header.back.button': ['back-button.png'],

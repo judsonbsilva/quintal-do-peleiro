@@ -17,7 +17,11 @@ if( !alertify.options ){
 						{ label: 'Opção 2', value: 2 },
 						{ label: 'Opção 3', value: 3 }
 					],
-					data: 'dataName'
+					data: 'dataName',
+					callback: function(){
+						console.log(this, arguments);
+					},
+					option: -1
 				}, params);
 			},
 			setup:function(){
@@ -50,8 +54,11 @@ if( !alertify.options ){
 				};
 		 	},
 			build:function(){
+					console.log(this);
+					var self = this;
 					$(this.elements.content).on('click', 'input', function(){
 						UserData.set(this.name, this.value);
+						self.settings.option = this.value/10;
 					});
 			},
 			prepare: function(){
@@ -85,7 +92,7 @@ if( !alertify.options ){
 						data = Number( UserData.get( dataName )),
 						counter = UserData.get('counter') || 0;
 
-				console.log(dataName, data, counter);
+				this.settings.callback.call( this );
 
 				UserData.set('counter', counter + data );
 				//The closeEvent has the following properties

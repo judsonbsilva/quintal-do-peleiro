@@ -66,11 +66,8 @@ var GardenState = {
 			'Você já aguou!'
 		);
 
-		Quintal.onClick(
-			game.add.sprite(10,0,'header.back.button'), function(){
-				game.state.start('home');
-			}
-		);
+		this.showBackButton = true;
+		HeaderState.create.call(this);
 
 		alertify.message('Que tal dar uma aguada na horta?');
 	},

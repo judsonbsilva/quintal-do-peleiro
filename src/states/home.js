@@ -43,7 +43,11 @@ var HomeState = {
 		this.garden.events.onInputDown.add(function(){
 			self.selectOption('garden');
 		}, this);
-
+		
+		HeaderState.create.call(this);
+	},
+	update: function(){
+		HeaderState.update.call(this);
 	},
 	selectOption: function( name ){
 		game.state.start(name);
