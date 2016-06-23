@@ -15,7 +15,8 @@ var GardenState = {
 			'garden.side',		'garden.button.1',
 			'garden.button.2',
 			'garden.button.3',
-			'header.back.button'
+			'header.back.button',
+			'menu.background'
 		]);
 	},
 
@@ -29,13 +30,14 @@ var GardenState = {
 		this.ground1 = game.add.sprite(0,0,'garden.ground.2');
 		this.ground2 = game.add.sprite(0,0,'garden.ground.1');
 
-		this.waterOption = 0;
-		this.water1 = game.add.sprite(0,0,'garden.water.1');
-		this.water2 = game.add.sprite(0,0,'garden.water.2');
-
 		this.plantOption = 0;
 		this.plant1 = game.add.sprite(0,0,'garden.plant.1');
 		this.plant2 = game.add.sprite(0,0,'garden.plant.2');
+
+
+		this.waterOption = 0;
+		this.water1 = game.add.sprite(0,0,'garden.water.1');
+		this.water2 = game.add.sprite(0,0,'garden.water.2');
 
 
 		game.add.sprite(0, 390, 'garden.side');
@@ -57,6 +59,7 @@ var GardenState = {
 				data: 'horta.plantar',
 				callback: function(){
 					if( this.settings.option > 0 ){
+						console.log("HERE", this.settings.option);
 						self.plantOption = this.settings.option;
 						self.showBackButton = false;
 					}
@@ -79,7 +82,7 @@ var GardenState = {
 				data: 'horta.arar',
 				callback: function(){
 					if( this.settings.option > 0 ){
-						self.groundOption = this.settings.option;
+						self.groundOption = 1;
 						self.showBackButton = false;
 					}
 				}
@@ -101,6 +104,7 @@ var GardenState = {
 				callback: function(){
 					if( this.settings.option > 0 ){
 						self.waterOption = this.settings.option;
+						console.log(this.settings.option);
 						self.showBackButton = false;
 					}
 				}
@@ -114,11 +118,11 @@ var GardenState = {
 	},
 	update: function(){
 		if( this.waterOption == 1 ){
-			this.water1.visible = true;
-			this.water2.visible = false;
-		} else if( this.waterOption == 2 ){
 			this.water1.visible = false;
 			this.water2.visible = true;
+		} else if( this.waterOption == 2 ){
+			this.water1.visible = true;
+			this.water2.visible = false;
 		} else {
 			this.water1.visible = false;
 			this.water2.visible = false;
@@ -132,7 +136,7 @@ var GardenState = {
 			this.ground2.visible = true;
 		}
 
-		if( this.plantOption == 1 ){
+		if( this.plantOption == 3 ){
 			this.plant1.visible = true;
 			this.plant2.visible = false;
 		} else if( this.plantOption == 2 ){
