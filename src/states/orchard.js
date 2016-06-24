@@ -8,8 +8,13 @@ var OrchardState = {
 			'orchard.background', 'orchard.trees', 'orchard.tree.side', 'orchard.tree.top',
 			'orchard.good.fruit', 'orchard.bad.fruit', 'menu.background', 'orchard.button.1',
 			'orchard.button.2', 'orchard.button.3' ,'header.back.button', 'orchard.compost.1',
-			'orchard.compost.2', 'orchard.compost.3'
+			'orchard.compost.2', 'orchard.compost.3', 'header.eggs',
+			'header.carrots',
+			'header.fruits',
+			'header.money',
 		]);
+
+		game.load.spritesheet('timer', 'assets/outros/ampulheta-sprite.png', 207, 318, 3);
 	},
 
 	create: function(){
@@ -17,6 +22,12 @@ var OrchardState = {
 		game.add.tileSprite(0, 0, gameWidth, gameHeight, 'orchard.background');
 
 		var self = this;
+
+		this.time = 120;
+		this.timeCounted = 0;
+		this.points = 300;
+		this.counter = 0;
+		this.bonus = 'fruits';
 
 		this.countQuestions = 0;
 
@@ -53,10 +64,10 @@ var OrchardState = {
 				callback: function(){
 					if( this.settings.option > 0 ){
 						self.fruitOption = 1;
-						self.countQuestions++;
+						self.counter++;
 						alertify.message('As frutas parecem melhores agora não?');
+						self.showBackButton = false;
 					}
-					self.showBackButton = false;
 				}
 			});
 
@@ -78,9 +89,9 @@ var OrchardState = {
 				callback: function(){
 					if( this.settings.option > 0 ){
 						self.treesOption = this.settings.option;
-						self.countQuestions++;
+						self.counter++;
+						self.showBackButton = false;
 					}
-					self.showBackButton = false;
 				}
 			});
 		});
@@ -101,9 +112,9 @@ var OrchardState = {
 				callback: function(){
 					if( this.settings.option > 0 ){
 						self.compostOption = this.settings.option;
-						self.countQuestions++;
+						self.counter++;
+						self.showBackButton = false;
 					}
-					self.showBackButton = false;
 				}
 			});
 		});
@@ -111,18 +122,10 @@ var OrchardState = {
 		this.showBackButton = true;
 		HeaderState.create.call(this);
 
-		game.time.events.loop(Phaser.Timer.SECOND, this.updateCounter, this);
-
 		alertify.message('Você poderia adubar as árvores!');
 
 	},
-	updateCounter: function(){
-		console.log(arguments, this, new Date());
-	},
 	update: function(){
-
-		if( this.countQuestions == 3 )
-			this.showBackButton = true;
 
 		if( this.fruitOption == 1 ){
 			this.goodFruit.visible = true;

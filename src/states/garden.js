@@ -12,12 +12,19 @@ var GardenState = {
 			'garden.plant.2',
 			'garden.ground.1',
 			'garden.ground.2',
-			'garden.side',		'garden.button.1',
+			'garden.side',
+			'garden.button.1',
 			'garden.button.2',
 			'garden.button.3',
 			'header.back.button',
+			'header.eggs',
+			'header.carrots',
+			'header.fruits',
+			'header.money',
 			'menu.background'
 		]);
+
+		game.load.spritesheet('timer', 'assets/outros/ampulheta-sprite.png', 207, 318, 3);
 	},
 
 	create: function(){
@@ -25,6 +32,12 @@ var GardenState = {
 		game.add.tileSprite(0, 0, gameWidth, gameHeight, 'garden.background');
 
 		var self = this;
+
+		this.time = 30;
+		this.timeCounted = 0;
+		this.points = 30;
+		this.counter = 0;
+		this.bonus = 'carrots';
 
 		this.groundOption = 0;
 		this.ground1 = game.add.sprite(0,0,'garden.ground.2');
@@ -62,6 +75,7 @@ var GardenState = {
 						console.log("HERE", this.settings.option);
 						self.plantOption = this.settings.option;
 						self.showBackButton = false;
+						self.counter++;
 					}
 				}
 			});
@@ -84,6 +98,7 @@ var GardenState = {
 					if( this.settings.option > 0 ){
 						self.groundOption = 1;
 						self.showBackButton = false;
+						self.counter++;
 					}
 				}
 			});
@@ -106,6 +121,7 @@ var GardenState = {
 						self.waterOption = this.settings.option;
 						console.log(this.settings.option);
 						self.showBackButton = false;
+						self.counter++;
 					}
 				}
 			});
@@ -145,6 +161,11 @@ var GardenState = {
 		} else {
 			this.plant1.visible = false;
 			this.plant2.visible = false;
+		}
+
+		if( this.counter >= 3 ){
+			this.counter = 0;
+			this.cronometer = true;
 		}
 
 		HeaderState.update.call(this);

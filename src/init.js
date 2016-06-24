@@ -62,7 +62,12 @@ Quintal = {
 
 	sprites: {
 
-		'header.back.button': ['back-button.png'],
+		'header.back.button': ['outros', 'voltar.png'],
+		'header.eggs':        ['outros', 'ovos.png'],
+		'header.carrots':     ['outros', 'cenoura.png'],
+		'header.fruits':      ['outros', 'frutas.png'],
+		'header.money':       ['outros', 'moeda.png'],
+
 		'menu.background':    ['menu-background.png'],
 
 		'home.farm':       ['inicio', 'home-farm.png'],

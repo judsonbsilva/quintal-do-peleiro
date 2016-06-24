@@ -4,9 +4,11 @@ var HomeState = {
 		// Change the background color of the game
 		game.stage.backgroundColor = '#159624';
 		// Load sprites
-		Quintal.loadSprites(['home.farm','home.orchard','home.garden',
-			'menu.background', 'home.button.1','home.button.2',
-			'home.button.3', 'home.button.4', 'header.back.button'
+		Quintal.loadSprites([
+			'home.farm','home.orchard','home.garden','menu.background',
+			'home.button.1','home.button.2','home.button.3', 'home.button.4',
+			'header.back.button','header.eggs','header.carrots','header.fruits',
+			'header.money'
 		]);
 
 	},
@@ -27,7 +29,24 @@ var HomeState = {
 		this.orchard = game.add.sprite(260, 490, 'home.button.2');
 		this.garden  = game.add.sprite(350, 510, 'home.button.1');
 		this.farm    = game.add.sprite(480, 490, 'home.button.3');
-		game.add.sprite(600, 490, 'home.button.4');
+
+		Quintal.onClick( game.add.sprite(600, 490, 'home.button.4'), function(){
+
+			var money = Quintal.points.eggs;
+			Quintal.points.eggs = 0;
+
+			money += Quintal.points.fruits;
+			Quintal.points.fruits = 0;
+
+			money += Quintal.points.carrots;
+			Quintal.points.carrots = 0;
+
+			Quintal.points.money = money;
+
+			alertify.message("Você ganhou R$" + money + "!");
+		});
+
+
 
 		this.orchard.inputEnabled = true;
 		this.orchard.events.onInputDown.add(function(){
@@ -43,7 +62,7 @@ var HomeState = {
 		this.garden.events.onInputDown.add(function(){
 			self.selectOption('garden');
 		}, this);
-		
+
 		HeaderState.create.call(this);
 	},
 	update: function(){

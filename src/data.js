@@ -8,7 +8,16 @@ UserData = {
 		this.storage['name'] = name;
 	},
 	set: function( key, value ){
-		this.storage[key] = value;
+		value /= 10;
+
+		console.log(key, value);
+		console.log(this.storage[key]);
+
+		if( UserData.has(key) && this.storage[key] )
+			this.storage[key].push(value);
+		else
+			this.storage[key] = [value];
+
 	},
 	get: function( key ){
 		if( this.has(key) )

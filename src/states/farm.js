@@ -18,11 +18,14 @@ var FarmState = {
 			'farm.button.1',
 			'farm.button.2',
 			'farm.button.3',
-			'header.back.button'
+			'header.back.button',
+			'header.eggs',
+			'header.carrots',
+			'header.fruits',
+			'header.money',
 		]);
 
-		//game.load.image('orchard', 'assets/inicio/pomar.png');
-		//game.load.image('garden', 'assets/inicio/horta.png');
+		game.load.spritesheet('timer', 'assets/outros/ampulheta-sprite.png', 207, 318, 3);
 	},
 
 	create: function(){
@@ -30,6 +33,12 @@ var FarmState = {
 		game.add.tileSprite(0, 0, gameWidth, gameHeight, 'farm.background');
 
 		var self = this;
+
+		this.time = 60;
+		this.timeCounted = 0;
+		this.points = 100;
+		this.counter = 0;
+		this.bonus = 'eggs';
 
 		this.dirtOption = 0;
 
@@ -68,6 +77,7 @@ var FarmState = {
 					if( this.settings.option > 0 ){
 						self.foodOption = this.settings.option;
 						self.showBackButton = false;
+						self.counter++;
 					}
 				}
 			});
@@ -89,7 +99,7 @@ var FarmState = {
 					if( this.settings.option > 0 ){
 						self.ledOption = this.settings.option;
 						self.showBackButton = false;
-						console.log(self.ledOption);
+						self.counter++;
 					}
 				}
 			});
@@ -111,6 +121,7 @@ var FarmState = {
 					if( this.settings.option > 0 ){
 						self.dirtOption = 1;
 						self.showBackButton = false;
+						self.counter++;
 					}
 				}
 			});
@@ -167,6 +178,11 @@ var FarmState = {
 			this.food2.visible = false;
 			this.food3.visible = false;
 			this.food0.visible = true;
+		}
+
+		if( this.counter >= 3 ){
+			this.counter = 0;
+			this.cronometer = true;
 		}
 
 		HeaderState.update.call(this);
