@@ -41,9 +41,18 @@ var HomeState = {
 			money += Quintal.points.carrots;
 			Quintal.points.carrots = 0;
 
-			Quintal.points.money = money;
+			Quintal.points.money += money;
 
 			alertify.message("Você ganhou R$" + money + "!");
+
+			if( Quintal.points.money >= 1000 ){
+				alertify.alert('Fim', JSON.stringify( UserData.storage ), function(){
+					if( remote ){
+						var window = remote.getCurrentWindow();
+					}
+					window.close();
+				});
+			}
 		});
 
 
