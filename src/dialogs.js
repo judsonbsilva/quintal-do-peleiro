@@ -89,12 +89,9 @@ if( !alertify.options ){
 			},
 			callback:function(closeEvent){
 				var dataName = this.settings.data,
-						data = Number( UserData.get( dataName )),
-						counter = UserData.get('counter') || 0;
-
+						data = Number( UserData.get( dataName ));
+						
 				this.settings.callback.call( this );
-
-				UserData.set('counter', counter + data );
 				//The closeEvent has the following properties
 				//
 				// index: The index of the button triggering the event.

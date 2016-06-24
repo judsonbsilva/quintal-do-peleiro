@@ -46,11 +46,33 @@ var HomeState = {
 			alertify.message("Você ganhou R$" + money + "!");
 
 			if( Quintal.points.money >= 1000 ){
-				alertify.alert('Fim', JSON.stringify( UserData.storage ), function(){
-					if( remote ){
+
+				var text = "Nome: " + UserData.storage.name + "<br/>";
+
+				delete UserData.storage.name;
+				delete UserData.storage.counter;
+
+				_.each(UserData.storage, function( list, key ){
+					var values = {1:0, 2:0, 3:0};
+					_.each(list, function( number ){
+						values[number]++;
+					});
+
+					text += "<h3>"+ key + "</h3><br/>";
+					text += "1) " + values[1] + "<br/>";
+					text += "2) " + values[2] + "<br/>"
+					text += "3) " + values[3] + "<br/>"
+
+				});
+
+
+				alertify.alert('Fim', text, function(){
+					try {
 						var window = remote.getCurrentWindow();
+						window.close();
+					} catch(e){
+						window.close();
 					}
-					window.close();
 				});
 			}
 		});
