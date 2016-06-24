@@ -5,12 +5,20 @@
   "main": "index.js",
   "scripts": {
     "start": "electron .",
+    "build": "build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Judson Silva",
   "license": "MIT",
   "devDependencies": {
     "electron-builder": "^5.7.0",
+    "electron-packager": "^7.1.0",
     "electron-prebuilt": "^1.2.5"
+  },
+  "build": {
+    "win": {
+      "iconUrl": "https://raw.githubusercontent.com/judsonbsilva/quintal-do-peleiro/gh-pages/assets/outros/icone%20da%20cabe%C3%A7a.ico",
+      "icon": "./assets/outros/icone-cabeca.ico"
+    }
   }
 }
