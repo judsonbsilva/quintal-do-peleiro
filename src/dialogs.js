@@ -58,7 +58,7 @@ if( !alertify.options ){
 					var self = this;
 					$(this.elements.content).on('click', 'input', function(){
 						UserData.set(this.name, this.value);
-						self.settings.option = this.value/10;
+						self.settings.option = this.value;
 					});
 			},
 			prepare: function(){
@@ -90,8 +90,8 @@ if( !alertify.options ){
 			callback:function(closeEvent){
 				var dataName = this.settings.data,
 						data = Number( UserData.get( dataName ));
-						
-				this.settings.callback.call( this );
+
+				this.settings.callback.call( this, this.settings.option );
 				//The closeEvent has the following properties
 				//
 				// index: The index of the button triggering the event.

@@ -59,7 +59,15 @@ Quintal = {
 		carrots: 0,
 		money: 0
 	},
+    conditionClicks: {
+        total: 0,
+        garden: 0,
+        farm: 0,
+        orchard: 0
+    },
+    totalClicks: 0,
     conditionIndex: 0,
+    condition: 'A',
     conditions: {
         order: ['A', 'B', 'C', 'B','C','C','B', 'A'],
         A: {
@@ -77,7 +85,10 @@ Quintal = {
                 time: 90,
                 clicks: 0,
                 points: 180
-            }
+            },
+            carrots: 1,
+            fruits: 1,
+            eggs: 3
         },
         B: {
             garden: {
@@ -94,7 +105,10 @@ Quintal = {
                 time: 30,
                 points: 60,
                 clicks: 0
-            }
+            },
+            carrots: 1,
+            fruits: 3,
+            eggs: 1
         },
         C: {
             garden: {
@@ -111,7 +125,10 @@ Quintal = {
                 time: 60,
                 points: 120,
                 clicks: 0
-            }
+            },
+            carrots: 3,
+            fruits: 1,
+            eggs: 1
         }
     },
 	sprites: {

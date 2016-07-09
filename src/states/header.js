@@ -84,14 +84,23 @@ HeaderState = {
     if( !this.cronometer ) return;
 
     this.timeCounted++;
-    this.timeText.setText( this.time - this.timeCounted );
 
-  	if( this.timeCounted >= this.time ){
+    var condition = Quintal.conditions[ Quintal.condition ];
+
+    console.log(condition);
+    console.log( this.current );
+
+    var time = condition[game.state.current].time,
+        points = condition[game.state.current].points;
+
+    this.timeText.setText( time - this.timeCounted );
+
+  	if( this.timeCounted >= time ){
       this.cronometer = false;
       this.showBackButton = true;
       this.timeCounted = 0;
-      Quintal.points[this.bonus] += this.points;
-      alertify.message('Você ganhou ' + this.points + '!');
+      Quintal.points[this.bonus] += points;
+      alertify.message('Você ganhou ' + points + '!');
 
       this.countQuestions = this.fruitOption = this.compostOption = this.groundOption = this.plantOption = this.waterOption = this.dirtOption = this.ledOption = this.foodOption = 0;
     }

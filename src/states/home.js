@@ -29,11 +29,51 @@ var HomeState = {
 		this.orchard = game.add.sprite(260, 490, 'home.button.2');
 		this.garden  = game.add.sprite(350, 510, 'home.button.1');
 		this.farm    = game.add.sprite(480, 490, 'home.button.3');
+        this.market  = game.add.sprite(600, 490, 'home.button.4');
 
-		Quintal.onClick( game.add.sprite(600, 490, 'home.button.4'), function(){
+        Quintal.onClick(this.market, function(){
 
+            alertify.options({
+                question: 'O que deseja vender?',
+                options: [
+                    { label: 'Frutas', value: 1 },
+                    { label: 'Ovos', value: 2 },
+                    { label: 'Cenouras', value: 3 }
+                ],
+                callback: function( value ){
+                    if( value == 1 ){
+                        var money = Quintal.conditions[ Quintal.condition ].fruits;
+                        
+                        money *= Quintal.points.fruits;
+                        
+                        Quintal.points.money += money;
+                        Quintal.points.fruits = 0;
+                        
+                        alertify.message('Você ganhou R$'+ money + ' pelas frutas');
+                    } else if( value == 2 ){
+                        var money = Quintal.conditions[ Quintal.condition ].eggs;
+                        
+                        money *= Quintal.points.eggs;
+                        
+                        Quintal.points.money += money;
+                        Quintal.points.eggs = 0;
+                        
+                        alertify.message('Você ganhou R$'+ money + ' pelos ovos');
+                    } else if(value == 3){
+                        var money = Quintal.conditions[ Quintal.condition ].carrots;
+                        
+                        money *= Quintal.points.carrots;
+                        
+                        Quintal.points.money += money;
+                        Quintal.points.carrots = 0;
+                        
+                        alertify.message('Você ganhou R$'+ money + ' pelas cenouras');
+                    }
+                }
+            });
+
+        /*
 			var money = Quintal.points.eggs;
-			Quintal.points.eggs = 0;
 
 			money += Quintal.points.fruits;
 			Quintal.points.fruits = 0;
@@ -75,29 +115,65 @@ var HomeState = {
 					}
 				});
 			}
+        */
 		});
 
 
 
 		this.orchard.inputEnabled = true;
 		this.orchard.events.onInputDown.add(function(){
-			self.selectOption('orchard');
+            self.incrementClick('orchard');
 		}, this);
 
 		this.farm.inputEnabled = true;
 		this.farm.events.onInputDown.add(function(){
-			self.selectOption('farm');
+            self.incrementClick('farm');
 		}, this);
 
 		this.garden.inputEnabled = true;
 		this.garden.events.onInputDown.add(function(){
-			self.selectOption('garden');
+            self.incrementClick('garden');
 		}, this);
 
 		HeaderState.create.call(this);
 	},
+    incrementClick: function( screen ){
+        if( this.showMarket ) this.showMarket = false;
+
+        Quintal.conditions[ Quintal.condition ][screen].clicks++;
+        Quintal.totalClicks++;
+        Quintal.conditionClicks.total++;
+        Quintal.conditionClicks[screen]++;
+
+        this.selectOption(screen);
+
+        if( Quintal.totalClicks != 0 && Quintal.totalClicks % 3 == 0 )
+            this.showMarket = true;
+
+        if( Quintal.conditionClicks.total >= 10 ){
+
+            var x = Quintal.conditionClicks.farm / Quintal.conditionClicks.total,
+                y = Quintal.conditionClicks.garden/ Quintal.conditionClicks.total,
+                z = Quintal.conditionClicks.orchard/ Quintal.conditionClicks.total;
+
+            if( x >= 0.6 || y >= 0.6 || z >= 0.6 ){
+                this.showMarket = true;
+                var index = ++Quintal.conditionIndex;
+                Quintal.condition = Quintal.conditions.order[index];
+                Quintal.conditionClicks.farm = 0;
+                Quintal.conditionClicks.garden = 0;
+                Quintal.conditionClicks.orchard = 0;
+                Quintal.confitionClicks.total = 0;
+            }
+        }
+    },
 	update: function(){
 		HeaderState.update.call(this);
+
+        if( this.showMarket )
+            this.market.visible = true;
+        else
+            this.market.visible = false;
 	},
 	selectOption: function( name ){
 		game.state.start(name);
