@@ -62,69 +62,21 @@ var FarmState = {
 		game.add.sprite(220, 480, 'menu.background');
 
 		Quintal.onClick( game.add.sprite(250, 490, 'farm.button.1'), function(){
-			var data = UserData.questions.farm.buttons[0];
-
-			if( self.foodOption != 0 ){
-				alertify.message('Escolha outra opção!');
-				return;
-			}
-
-			alertify.options({
-				question: data.title,
-				options: data.options,
-				data: 'granja.alimento',
-				callback: function(){
-					if( this.settings.option > 0 ){
-						self.foodOption = this.settings.option;
-						self.showBackButton = false;
-						self.counter++;
-					}
-				}
-			});
-		});
+			self.foodOption = 2;
+			self.showBackButton = false;
+			self.counter++;
+	    });
 
 		Quintal.onClick( game.add.sprite(430, 490, 'farm.button.2'), function(){
-			var data = UserData.questions.farm.buttons[2];
-
-			if( self.ledOption != 0 ){
-				alertify.message('Escolha outra opção!');
-				return;
-			}
-
-			alertify.options({
-				question: data.title,
-				options: data.options,
-				data: 'granja.iluminacao',
-				callback: function(){
-					if( this.settings.option > 0 ){
-						self.ledOption = this.settings.option;
-						self.showBackButton = false;
-						self.counter++;
-					}
-				}
-			});
+			self.ledOption = 2;
+			self.showBackButton = false;
+			self.counter++;
 		});
 
 		Quintal.onClick( game.add.sprite(600, 490, 'farm.button.3'), function(){
-			var data = UserData.questions.farm.buttons[1];
-
-			if( self.dirtOption != 0 ){
-				alertify.message('Escolha outra opção!');
-				return;
-			}
-
-			alertify.options({
-				question: data.title,
-				options: data.options,
-				data: 'granja.limpeza',
-				callback: function(){
-					if( this.settings.option > 0 ){
-						self.dirtOption = 1;
-						self.showBackButton = false;
-						self.counter++;
-					}
-				}
-			});
+			self.dirtOption = 1;
+			self.showBackButton = false;
+			self.counter++;
 		});
 
 		game.add.sprite(600, 490, 'farm.button.3');

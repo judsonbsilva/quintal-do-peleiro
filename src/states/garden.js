@@ -59,72 +59,22 @@ var GardenState = {
 
 
 		Quintal.onClick( game.add.sprite(250, 490, 'garden.button.1'), function(){
-			var data = UserData.questions.garden.buttons[1];
-
-			if( self.plantOption != 0 ){
-				alertify.message('Escolha outra opção!');
-				return;
-			}
-
-			alertify.options({
-				question: data.title,
-				options: data.options,
-				data: 'horta.plantar',
-				callback: function(){
-					if( this.settings.option > 0 ){
-						console.log("HERE", this.settings.option);
-						self.plantOption = this.settings.option;
-						self.showBackButton = false;
-						self.counter++;
-					}
-				}
-			});
+			self.plantOption = 2;
+			self.showBackButton = false;
+			self.counter++;
 		});
 
 
 		Quintal.onClick( game.add.sprite(430, 490, 'garden.button.2'), function(){
-			var data = UserData.questions.garden.buttons[0];
-
-			if( self.groundOption != 0 ){
-				alertify.message('Escolha outra opção!');
-				return;
-			}
-
-			alertify.options({
-				question: data.title,
-				options: data.options,
-				data: 'horta.arar',
-				callback: function(){
-					if( this.settings.option > 0 ){
-						self.groundOption = 1;
-						self.showBackButton = false;
-						self.counter++;
-					}
-				}
-			});
+			self.groundOption = 1;
+			self.showBackButton = false;
+			self.counter++;
 		});
 
 		Quintal.onClick( game.add.sprite(600, 490, 'garden.button.3'), function(){
-			var data = UserData.questions.garden.buttons[2];
-
-			if( self.waterOption != 0 ){
-				alertify.message('Escolha outra opção!');
-				return;
-			}
-
-			alertify.options({
-				question: data.title,
-				options: data.options,
-				data: 'horta.aguar',
-				callback: function(){
-					if( this.settings.option > 0 ){
-						self.waterOption = this.settings.option;
-						console.log(this.settings.option);
-						self.showBackButton = false;
-						self.counter++;
-					}
-				}
-			});
+			self.waterOption = 1;
+			self.showBackButton = false;
+			self.counter++;
 		});
 
 		this.showBackButton = true;
