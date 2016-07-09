@@ -39,19 +39,19 @@ Quintal = {
 		}, this);
 	},
 	buttonAction:function(element, dataName, data, message){
-			Quintal.onClick(element, function(){
+		Quintal.onClick(element, function(){
 
-				if( !UserData.has(dataName) ){
-					var question = data;
+			if( !UserData.has(dataName) ){
+				var question = data;
 
-					alertify.options({
-						question: question.title,
-						options: question.options,
-						data: dataName
-					});
+				alertify.options({
+					question: question.title,
+					options: question.options,
+					data: dataName
+				});
 
-				} else alertify.message(message);
-			});
+			} else alertify.message(message);
+		});
 	},
 	points: {
 		eggs: 0,
@@ -59,9 +59,62 @@ Quintal = {
 		carrots: 0,
 		money: 0
 	},
-
+    conditionIndex: 0,
+    conditions: {
+        order: ['A', 'B', 'C', 'B','C','C','B', 'A'],
+        A: {
+            garden: {
+                time: 30,
+                points: 60,
+                clicks: 0
+            },
+            farm: {
+                time: 60,
+                clicks: 0,
+                points: 120
+            },
+            orchard: {
+                time: 90,
+                clicks: 0,
+                points: 180
+            }
+        },
+        B: {
+            garden: {
+                time: 60,
+                points: 120,
+                clicks: 0
+            },
+            farm: {
+                time: 90,
+                points: 180,
+                clicks: 0
+            },
+            orchard: {
+                time: 30,
+                points: 60,
+                clicks: 0
+            }
+        },
+        C: {
+            garden: {
+                time: 90,
+                points: 180,
+                clicks: 0
+            },
+            farm: {
+                time: 30,
+                points: 60,
+                clicks: 0
+            },
+            orchard: {
+                time: 60,
+                points: 120,
+                clicks: 0
+            }
+        }
+    },
 	sprites: {
-
 		'header.back.button': ['outros', 'voltar.png'],
 		'header.eggs':        ['outros', 'ovos.png'],
 		'header.carrots':     ['outros', 'cenoura.png'],
