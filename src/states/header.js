@@ -58,6 +58,8 @@ HeaderState = {
     game.time.events.loop(Phaser.Timer.SECOND, function(){
         HeaderState.updateCounter.call(self);
     }, this);
+
+    game.add.text(900, 600, Quintal.condition, { font: 'Bold 12px Arial', fill: '#ffffff' });
   },
   update: function(){
     this.fruitPoints.text = Quintal.points.fruits;
@@ -75,10 +77,10 @@ HeaderState = {
       this.timeText.visible   = false;
     }
 
-		if( this.counter == 3 ){
-			this.counter = 0;
-			this.cronometer = true;
-		}
+	if( this.counter == 3 ){
+		this.counter = 0;
+		this.cronometer = true;
+	}
   },
   updateCounter: function(){
     if( !this.cronometer ) return;
