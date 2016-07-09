@@ -17,7 +17,7 @@
   },
   "build": {
     "win": {
-      "iconUrl": "https://raw.githubusercontent.com/judsonbsilva/quintal-do-peleiro/gh-pages/assets/outros/icone%20da%20cabe%C3%A7a.ico",
+      "iconUrl": "https://raw.githubusercontent.com/judsonbsilva/quintal-do-peleiro/gh-pages/assets/outros/icone-cabeca.ico",
       "icon": "./assets/outros/icone-cabeca.ico"
     }
   }
