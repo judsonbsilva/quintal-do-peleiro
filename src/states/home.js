@@ -156,7 +156,7 @@ var HomeState = {
                 y = Quintal.conditionClicks.garden/ Quintal.conditionClicks.total,
                 z = Quintal.conditionClicks.orchard/ Quintal.conditionClicks.total;
 
-            if( x >= 0.6 || y >= 0.6 || z >= 0.6 ){
+            if( x >= 0.6 || y >= 0.6 || z >= 0.6 || x >= 10 || y >= 10 || z >= 10 ){
                 this.showMarket = true;
                 var index = ++Quintal.conditionIndex;
                 Quintal.condition = Quintal.conditions.order[index];
