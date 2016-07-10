@@ -33,7 +33,7 @@ var FarmState = {
 		game.add.tileSprite(0, 0, gameWidth, gameHeight, 'farm.background');
 
 		var self = this;
-
+        this.options = [];
 		this.time = 60;
 		this.timeCounted = 0;
 		this.points = 100;
@@ -62,22 +62,31 @@ var FarmState = {
 		game.add.sprite(220, 480, 'menu.background');
 
 		Quintal.onClick( game.add.sprite(250, 490, 'farm.button.1'), function(){
-			self.foodOption = 2;
-			self.showBackButton = false;
-			self.counter++;
+            if( self.options.indexOf(1) == -1 ){
+                self.options.push(1);
+                self.foodOption = 2;
+                self.showBackButton = false;
+                self.counter++;
+            }
 	    });
 
 		Quintal.onClick( game.add.sprite(430, 490, 'farm.button.2'), function(){
-			self.ledOption = 2;
-			self.showBackButton = false;
-			self.counter++;
+			if( self.options.indexOf(2) == -1){
+                self.options.push(2);
+                self.ledOption = 2;
+                self.showBackButton = false;
+                self.counter++;
+            }
 		});
 
 		Quintal.onClick( game.add.sprite(600, 490, 'farm.button.3'), function(){
-			self.dirtOption = 1;
-			self.showBackButton = false;
-			self.counter++;
-		});
+			if( self.options.indexOf(3) == -1){
+                self.options.push(3);
+			    self.dirtOption = 1;
+			    self.showBackButton = false;
+			    self.counter++;
+            }
+        });
 
 		game.add.sprite(600, 490, 'farm.button.3');
 

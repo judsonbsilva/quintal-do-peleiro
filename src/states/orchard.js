@@ -22,6 +22,8 @@ var OrchardState = {
 		game.add.tileSprite(0, 0, gameWidth, gameHeight, 'orchard.background');
 
 		var self = this;
+        
+        this.options = [];
 
 		this.time = 120;
 		this.timeCounted = 0;
@@ -51,25 +53,32 @@ var OrchardState = {
 		game.add.sprite(220, 480, 'menu.background');
 
 		Quintal.onClick(game.add.sprite(250, 490, 'orchard.button.1'),function(){
-
-            self.fruitOption = 1;
-			self.counter++;
-			self.showBackButton = false;
-
+            if( self.options.indexOf(1) == -1 ){
+                self.options.push(1);
+                self.fruitOption = 1;
+                self.counter++;
+                self.showBackButton = false;
+            }
 		});
 
 		Quintal.onClick(game.add.sprite(430, 490, 'orchard.button.2'),function(){
-			self.treesOption = 1;
-			self.counter++;
-			self.showBackButton = false;
+            if( self.options.indexOf(2) == -1 ){
+                self.options.push(2);
+                self.treesOption = 1;
+                self.counter++;
+                self.showBackButton = false;
+            }
 		});
 
 
 		Quintal.onClick( game.add.sprite(600, 490, 'orchard.button.3'), function(){
-			self.compostOption = 1;
-			self.counter++;
-			self.showBackButton = false;
-		});
+            if( self.options.indexOf(3) == -1 ){
+                self.options.push(3);
+                self.compostOption = 1;
+                self.counter++;
+                self.showBackButton = false;
+            }
+        });
 
 		this.showBackButton = true;
 		HeaderState.create.call(this);
