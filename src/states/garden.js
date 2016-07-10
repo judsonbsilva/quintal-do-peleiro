@@ -32,7 +32,8 @@ var GardenState = {
 		game.add.tileSprite(0, 0, gameWidth, gameHeight, 'garden.background');
 
 		var self = this;
-
+        
+        this.options = [];
 		this.time = 30;
 		this.timeCounted = 0;
 		this.points = 30;
@@ -59,23 +60,32 @@ var GardenState = {
 
 
 		Quintal.onClick( game.add.sprite(250, 490, 'garden.button.1'), function(){
-			self.plantOption = 2;
-			self.showBackButton = false;
-			self.counter++;
+            if( self.options.indexOf(1) == -1 ){
+                self.options.push(1);
+                self.plantOption = 2;
+                self.showBackButton = false;
+                self.counter++;
+            }
 		});
 
 
 		Quintal.onClick( game.add.sprite(430, 490, 'garden.button.2'), function(){
-			self.groundOption = 1;
-			self.showBackButton = false;
-			self.counter++;
+            if( self.options.indexOf(2) == -1 ){
+                self.options.push(2);
+                self.groundOption = 1;
+                self.showBackButton = false;
+                self.counter++;
+            }
 		});
 
 		Quintal.onClick( game.add.sprite(600, 490, 'garden.button.3'), function(){
-			self.waterOption = 1;
-			self.showBackButton = false;
-			self.counter++;
-		});
+            if( self.options.indexOf(3) == -1 ){
+                self.options.push(3);
+                self.waterOption = 1;
+                self.showBackButton = false;
+                self.counter++;
+            }
+        });
 
 		this.showBackButton = true;
 		HeaderState.create.call(this);
