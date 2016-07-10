@@ -89,8 +89,6 @@ var GardenState = {
 
 		this.showBackButton = true;
 		HeaderState.create.call(this);
-
-		alertify.message('Que tal dar uma aguada na horta?');
 	},
 	update: function(){
 		if( this.waterOption == 1 ){

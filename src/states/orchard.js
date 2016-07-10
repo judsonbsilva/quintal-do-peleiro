@@ -82,9 +82,6 @@ var OrchardState = {
 
 		this.showBackButton = true;
 		HeaderState.create.call(this);
-
-		alertify.message('Você poderia adubar as árvores!');
-
 	},
 	update: function(){
 

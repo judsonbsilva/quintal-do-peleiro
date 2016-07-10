@@ -147,9 +147,10 @@ var HomeState = {
 
         this.selectOption(screen);
 
-        if( Quintal.totalClicks != 0 && Quintal.totalClicks % 3 == 0 )
+        if( Quintal.totalClicks != 0 && Quintal.totalClicks % 3 == 0 ){
             this.showMarket = true;
-
+			alertify.message('Venda seus produtos no mercado!');
+		}
         if( Quintal.conditionClicks.total >= 10 ){
 
             var x = Quintal.conditionClicks.farm / Quintal.conditionClicks.total,
@@ -158,6 +159,7 @@ var HomeState = {
 
             if( x >= 0.6 || y >= 0.6 || z >= 0.6 || x >= 10 || y >= 10 || z >= 10 ){
                 this.showMarket = true;
+				alertify.message('Venda seus produtos no mercado!');
                 var index = ++Quintal.conditionIndex;
                 Quintal.condition = Quintal.conditions.order[index];
                 Quintal.conditionClicks.farm = 0;

@@ -92,8 +92,6 @@ var FarmState = {
 
 		this.showBackButton = true;
 		HeaderState.create.call(this);
-
-		alertify.message('As galinhas parecem famintas');
 	},
 	update: function(){
 		if( this.dirtOption == 1 )
