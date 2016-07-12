@@ -153,19 +153,26 @@ var HomeState = {
 		}
         if( Quintal.conditionClicks.total >= 10 ){
 
-            var x = Quintal.conditionClicks.farm / Quintal.conditionClicks.total,
-                y = Quintal.conditionClicks.garden/ Quintal.conditionClicks.total,
-                z = Quintal.conditionClicks.orchard/ Quintal.conditionClicks.total;
+            var x = Quintal.conditionClicks.farm,
+                y = Quintal.conditionClicks.garden,
+                z = Quintal.conditionClicks.orchard,
+                t = Quintal.conditionClicks.total;
 
-            if( x >= 0.6 || y >= 0.6 || z >= 0.6 || x >= 10 || y >= 10 || z >= 10 ){
+            if( x/t >= 0.6 || y/t >= 0.6 || z/t >= 0.6 || x>= 10 || y >= 10 || z >= 10 ){
                 this.showMarket = true;
 				alertify.message('Venda seus produtos no mercado!');
-                var index = ++Quintal.conditionIndex;
+                Quintal.conditionIndex += 1;
+                
+                if( Quintal.coditionIndex >= Quintal.conditions.order.length ){
+                    alertify.message("ACABOU!", "FIM");
+                }
+                
+                var index = Quintal.conditionIndex;
                 Quintal.condition = Quintal.conditions.order[index];
                 Quintal.conditionClicks.farm = 0;
                 Quintal.conditionClicks.garden = 0;
                 Quintal.conditionClicks.orchard = 0;
-                Quintal.confitionClicks.total = 0;
+                Quintal.conditionClicks.total = 0;
             }
         }
     },
