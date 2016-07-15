@@ -12,7 +12,7 @@
   "license": "MIT",
   "devDependencies": {
     "electron-builder": "^5.7.0",
-    "electron-packager": "^7.1.0",
+    "electron-packager": "^7.3.0",
     "electron-prebuilt": "^1.2.5"
   },
   "build": {
@@ -20,5 +20,8 @@
       "iconUrl": "https://raw.githubusercontent.com/judsonbsilva/quintal-do-peleiro/gh-pages/assets/outros/icone-cabeca.ico",
       "icon": "./assets/outros/icone-cabeca.ico"
     }
+  },
+  "dependencies": {
+    "electron-debug": "^1.0.1"
   }
 }
