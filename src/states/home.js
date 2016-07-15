@@ -43,30 +43,30 @@ var HomeState = {
                 callback: function( value ){
                     if( value == 1 ){
                         var money = Quintal.conditions[ Quintal.condition ].fruits;
-                        
+
                         money *= Quintal.points.fruits;
-                        
+
                         Quintal.points.money += money;
                         Quintal.points.fruits = 0;
-                        
+
                         alertify.message('Você ganhou R$'+ money + ' pelas frutas');
                     } else if( value == 2 ){
                         var money = Quintal.conditions[ Quintal.condition ].eggs;
-                        
+
                         money *= Quintal.points.eggs;
-                        
+
                         Quintal.points.money += money;
                         Quintal.points.eggs = 0;
-                        
+
                         alertify.message('Você ganhou R$'+ money + ' pelos ovos');
                     } else if(value == 3){
                         var money = Quintal.conditions[ Quintal.condition ].carrots;
-                        
+
                         money *= Quintal.points.carrots;
-                        
+
                         Quintal.points.money += money;
                         Quintal.points.carrots = 0;
-                        
+
                         alertify.message('Você ganhou R$'+ money + ' pelas cenouras');
                     }
                 }
@@ -162,11 +162,12 @@ var HomeState = {
                 this.showMarket = true;
 				alertify.message('Venda seus produtos no mercado!');
                 Quintal.conditionIndex += 1;
-                
+
                 if( Quintal.coditionIndex >= Quintal.conditions.order.length ){
                     alertify.message("ACABOU!", "FIM");
+										return;
                 }
-                
+
                 var index = Quintal.conditionIndex;
                 Quintal.condition = Quintal.conditions.order[index];
                 Quintal.conditionClicks.farm = 0;

@@ -69,7 +69,7 @@ Quintal = {
     conditionIndex: 0,
     condition: 'A',
     conditions: {
-        order: ['A', 'B', 'C', 'B','C','C','B', 'A'],
+        order: ['A','B','C','B','C','A','C','B','A'],
         A: {
             garden: {
                 time: 30,
@@ -190,5 +190,25 @@ Quintal = {
 		'garden.button.2':   ['horta','button-2.png'],
 		'garden.button.3':   ['horta','button-3.png'],
 
+		'basket.carrots.black' : ['cestas', 'carrots-black.png'],
+		'basket.carrots.blue'  : ['cestas', 'carrots-blue.png'],
+		'basket.carrots.green' : ['cestas', 'carrots-green.png'],
+		'basket.carrots.orange': ['cestas', 'carrots-orange.png'],
+		'basket.carrots.pink'  : ['cestas', 'carrots-pink.png'],
+		'basket.carrots.yellow': ['cestas', 'carrots-yellow.png'],
+
+		'basket.eggs.blue'  : ['cestas', 'eggs-black.png'],
+		'basket.eggs.green' : ['cestas', 'eggs-green.png'],
+		'basket.eggs.orange': ['cestas', 'eggs-orange.png'],
+		'basket.eggs.pink'  : ['cestas', 'eggs-pink.png'],
+		'basket.eggs.purple': ['cestas', 'eggs-purple.png'],
+		'basket.eggs.white' : ['cestas', 'eggs-white.png'],
+
+		'basket.fruits.green' : ['cestas', 'fruits-green.png'],
+		'basket.fruits.orange': ['cestas', 'fruits-orange.png'],
+		'basket.fruits.pink'  : ['cestas', 'fruits-pink.png'],
+		'basket.fruits.purple': ['cestas', 'fruits-purple.png'],
+		'basket.fruits.red'   : ['cestas', 'fruits-red.png'],
+		'basket.fruits.yellow': ['cestas', 'fruits-yellow.png']
 	}
 };

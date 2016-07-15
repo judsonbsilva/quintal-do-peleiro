@@ -33,8 +33,9 @@ var FarmState = {
 		game.add.tileSprite(0, 0, gameWidth, gameHeight, 'farm.background');
 
 		var self = this;
-        this.options = [];
-		this.time = 60;
+
+		this.options = [];
+
 		this.timeCounted = 0;
 		this.points = 100;
 		this.counter = 0;
@@ -67,6 +68,7 @@ var FarmState = {
                 self.foodOption = 2;
                 self.showBackButton = false;
                 self.counter++;
+								alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
             }
 	    });
 
@@ -76,17 +78,19 @@ var FarmState = {
                 self.ledOption = 2;
                 self.showBackButton = false;
                 self.counter++;
+								alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
             }
 		});
 
 		Quintal.onClick( game.add.sprite(600, 490, 'farm.button.3'), function(){
 			if( self.options.indexOf(3) == -1){
-                self.options.push(3);
-			    self.dirtOption = 1;
-			    self.showBackButton = false;
-			    self.counter++;
-            }
-        });
+          self.options.push(3);
+					self.dirtOption = 1;
+					self.showBackButton = false;
+					self.counter++;
+					alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
+        }
+    });
 
 		game.add.sprite(600, 490, 'farm.button.3');
 

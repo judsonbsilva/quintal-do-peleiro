@@ -32,9 +32,9 @@ var GardenState = {
 		game.add.tileSprite(0, 0, gameWidth, gameHeight, 'garden.background');
 
 		var self = this;
-        
-        this.options = [];
-		this.time = 30;
+
+    this.options = [];
+
 		this.timeCounted = 0;
 		this.points = 30;
 		this.counter = 0;
@@ -65,6 +65,7 @@ var GardenState = {
                 self.plantOption = 2;
                 self.showBackButton = false;
                 self.counter++;
+								alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
             }
 		});
 
@@ -75,6 +76,7 @@ var GardenState = {
                 self.groundOption = 1;
                 self.showBackButton = false;
                 self.counter++;
+								alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
             }
 		});
 
@@ -84,6 +86,7 @@ var GardenState = {
                 self.waterOption = 1;
                 self.showBackButton = false;
                 self.counter++;
+								alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
             }
         });
 

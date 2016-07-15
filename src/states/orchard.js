@@ -22,10 +22,8 @@ var OrchardState = {
 		game.add.tileSprite(0, 0, gameWidth, gameHeight, 'orchard.background');
 
 		var self = this;
-        
-        this.options = [];
 
-		this.time = 120;
+    this.options = [];
 		this.timeCounted = 0;
 		this.points = 300;
 		this.counter = 0;
@@ -57,6 +55,7 @@ var OrchardState = {
                 self.options.push(1);
                 self.fruitOption = 1;
                 self.counter++;
+								alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
                 self.showBackButton = false;
             }
 		});
@@ -66,6 +65,7 @@ var OrchardState = {
                 self.options.push(2);
                 self.treesOption = 1;
                 self.counter++;
+								alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
                 self.showBackButton = false;
             }
 		});
@@ -76,6 +76,7 @@ var OrchardState = {
                 self.options.push(3);
                 self.compostOption = 1;
                 self.counter++;
+								alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
                 self.showBackButton = false;
             }
         });
