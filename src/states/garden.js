@@ -21,7 +21,13 @@ var GardenState = {
 			'header.carrots',
 			'header.fruits',
 			'header.money',
-			'menu.background'
+			'menu.background',
+      'basket.carrots.blue',
+      'basket.carrots.black',
+      'basket.carrots.green',
+      'basket.carrots.orange',
+      'basket.carrots.pink',
+      'basket.carrots.yellow'
 		]);
 
 		game.load.spritesheet('timer', 'assets/outros/ampulheta-sprite.png', 207, 318, 3);
@@ -35,9 +41,19 @@ var GardenState = {
 
     this.options = [];
 
+    this.combinations = [
+            [1,2,3], //laranja
+            [1,3,2], //verde
+            [2,3,1], //amarelo
+            [2,1,3], //preto
+            [3,1,2], //rosa
+            [3,2,1]  //azul
+    ];
+    this.colors = ['orange','green','yellow','black','pink','blue'];
 		this.timeCounted = 0;
 		this.points = 30;
 		this.counter = 0;
+
 		this.bonus = 'carrots';
 
 		this.groundOption = 0;
@@ -122,11 +138,6 @@ var GardenState = {
 		} else {
 			this.plant1.visible = false;
 			this.plant2.visible = false;
-		}
-
-		if( this.counter >= 3 ){
-			this.counter = 0;
-			this.cronometer = true;
 		}
 
 		HeaderState.update.call(this);

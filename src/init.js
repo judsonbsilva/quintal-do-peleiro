@@ -190,14 +190,14 @@ Quintal = {
 		'garden.button.2':   ['horta','button-2.png'],
 		'garden.button.3':   ['horta','button-3.png'],
 
-		'basket.carrots.black' : ['cestas', 'carrots-black.png'],
 		'basket.carrots.blue'  : ['cestas', 'carrots-blue.png'],
+        'basket.carrots.black' : ['cestas', 'carrots-black.png'],
 		'basket.carrots.green' : ['cestas', 'carrots-green.png'],
 		'basket.carrots.orange': ['cestas', 'carrots-orange.png'],
 		'basket.carrots.pink'  : ['cestas', 'carrots-pink.png'],
 		'basket.carrots.yellow': ['cestas', 'carrots-yellow.png'],
 
-		'basket.eggs.blue'  : ['cestas', 'eggs-black.png'],
+		'basket.eggs.blue'  : ['cestas', 'eggs-blue.png'],
 		'basket.eggs.green' : ['cestas', 'eggs-green.png'],
 		'basket.eggs.orange': ['cestas', 'eggs-orange.png'],
 		'basket.eggs.pink'  : ['cestas', 'eggs-pink.png'],

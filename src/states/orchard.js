@@ -12,6 +12,12 @@ var OrchardState = {
 			'header.carrots',
 			'header.fruits',
 			'header.money',
+            'basket.fruits.green',
+            'basket.fruits.orange',
+            'basket.fruits.pink',
+            'basket.fruits.purple',
+            'basket.fruits.red',
+            'basket.fruits.yellow'
 		]);
 
 		game.load.spritesheet('timer', 'assets/outros/ampulheta-sprite.png', 207, 318, 3);
@@ -23,7 +29,23 @@ var OrchardState = {
 
 		var self = this;
 
-    this.options = [];
+        this.options = [];
+
+        this.combinations = [
+            [1,2,3], //laranja
+            [1,3,2], //rosa
+            [2,3,1], //roxa
+            [2,1,3], //vermelha
+            [3,1,2], //amarela
+            [3,2,1]  //verde
+        ];
+
+        this.colors = [
+          'orange','pink','purple','red','yellow','green'
+        ];
+
+        var baskets = [];
+
 		this.timeCounted = 0;
 		this.points = 300;
 		this.counter = 0;
@@ -55,7 +77,7 @@ var OrchardState = {
                 self.options.push(1);
                 self.fruitOption = 1;
                 self.counter++;
-								alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
+				alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
                 self.showBackButton = false;
             }
 		});
@@ -65,7 +87,7 @@ var OrchardState = {
                 self.options.push(2);
                 self.treesOption = 1;
                 self.counter++;
-								alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
+				alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
                 self.showBackButton = false;
             }
 		});
@@ -76,7 +98,7 @@ var OrchardState = {
                 self.options.push(3);
                 self.compostOption = 1;
                 self.counter++;
-								alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
+				alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
                 self.showBackButton = false;
             }
         });

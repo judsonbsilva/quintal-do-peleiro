@@ -23,7 +23,13 @@ var FarmState = {
 			'header.carrots',
 			'header.fruits',
 			'header.money',
-		]);
+            'basket.eggs.blue',
+            'basket.eggs.green',
+            'basket.eggs.orange',
+            'basket.eggs.pink',
+            'basket.eggs.purple',
+            'basket.eggs.white'
+        ]);
 
 		game.load.spritesheet('timer', 'assets/outros/ampulheta-sprite.png', 207, 318, 3);
 	},
@@ -36,11 +42,23 @@ var FarmState = {
 
 		this.options = [];
 
-		this.timeCounted = 0;
-		this.points = 100;
+        this.combinations = [
+            [1,2,3], //branca
+            [1,3,2], //azul
+            [2,3,1], //verde
+            [2,1,3], //rosa
+            [3,1,2], //laranja
+            [3,2,1]  //roxa
+        ];
+
+        this.colors = [
+          'white','blue','green','pink','orange','purple'
+        ];
+
+
 		this.counter = 0;
 		this.bonus = 'eggs';
-
+        this.timeCounted = 0;
 		this.dirtOption = 0;
 
 		this.farmDirt = game.add.sprite(200, 300, 'farm.dirt');
@@ -68,7 +86,7 @@ var FarmState = {
                 self.foodOption = 2;
                 self.showBackButton = false;
                 self.counter++;
-								alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
+				alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
             }
 	    });
 
@@ -78,19 +96,19 @@ var FarmState = {
                 self.ledOption = 2;
                 self.showBackButton = false;
                 self.counter++;
-								alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
+                alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
             }
 		});
 
 		Quintal.onClick( game.add.sprite(600, 490, 'farm.button.3'), function(){
 			if( self.options.indexOf(3) == -1){
-          self.options.push(3);
-					self.dirtOption = 1;
-					self.showBackButton = false;
-					self.counter++;
-					alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
-        }
-    });
+                self.options.push(3);
+				self.dirtOption = 1;
+				self.showBackButton = false;
+				self.counter++;
+				alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
+            }
+        });
 
 		game.add.sprite(600, 490, 'farm.button.3');
 
@@ -141,11 +159,6 @@ var FarmState = {
 			this.food2.visible = false;
 			this.food3.visible = false;
 			this.food0.visible = true;
-		}
-
-		if( this.counter >= 3 ){
-			this.counter = 0;
-			this.cronometer = true;
 		}
 
 		HeaderState.update.call(this);

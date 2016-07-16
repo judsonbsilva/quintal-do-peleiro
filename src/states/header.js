@@ -76,10 +76,30 @@ HeaderState = {
       this.timerImage.visible = false;
       this.timeText.visible   = false;
     }
-
+    console.log(this.counter);
 	if( this.counter == 3 ){
 		this.counter = 0;
 		this.cronometer = true;
+
+        var self = this,
+            colorIndex = -1;
+
+        console.log( "HEREEEE", this.combinations, this.options );
+
+        _.each(this.combinations, function( list, index ){
+            var isDiff = false;
+            _.each(list, function( number, i ){
+                if( number != self.options[i] )
+                    isDiff = true;
+            });
+
+            if( !isDiff )
+                colorIndex = index;
+        });
+        var local = Quintal.sprites['basket.' + this.bonus+ '.' + this.colors[colorIndex]];
+        var image = "<br/><img src='assets/cestas/"+ local[1] + "'/>";
+
+        alertify.alert('Parabéns', '<h3>Você ganhou</h3>' + image);
 	}
   },
   updateCounter: function(){
@@ -88,9 +108,6 @@ HeaderState = {
     this.timeCounted++;
 
     var condition = Quintal.conditions[ Quintal.condition ];
-
-    console.log(condition);
-    console.log( this.current );
 
     var time = condition[game.state.current].time,
         points = condition[game.state.current].points;
