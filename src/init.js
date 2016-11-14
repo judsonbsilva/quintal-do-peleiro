@@ -72,7 +72,7 @@ Quintal = {
         order: ['A','B','C','B','C','A','C','B','A'],
         A: {
             garden: {
-                time: 30,
+                time: 60,
                 points: 60,
                 clicks: 0
             },
@@ -82,7 +82,7 @@ Quintal = {
                 points: 120
             },
             orchard: {
-                time: 90,
+                time: 60,
                 clicks: 0,
                 points: 180
             },
@@ -97,12 +97,12 @@ Quintal = {
                 clicks: 0
             },
             farm: {
-                time: 90,
+                time: 60,
                 points: 180,
                 clicks: 0
             },
             orchard: {
-                time: 30,
+                time: 60,
                 points: 60,
                 clicks: 0
             },
@@ -112,12 +112,12 @@ Quintal = {
         },
         C: {
             garden: {
-                time: 90,
+                time: 60,
                 points: 180,
                 clicks: 0
             },
             farm: {
-                time: 30,
+                time: 60,
                 points: 60,
                 clicks: 0
             },
