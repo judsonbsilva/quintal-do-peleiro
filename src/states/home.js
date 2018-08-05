@@ -29,7 +29,8 @@ var HomeState = {
 		this.orchard = game.add.sprite(260, 490, 'home.button.2');
 		this.garden  = game.add.sprite(350, 510, 'home.button.1');
 		this.farm    = game.add.sprite(480, 490, 'home.button.3');
-        this.market  = game.add.sprite(600, 490, 'home.button.4');
+		
+		/*this.market  = game.add.sprite(600, 490, 'home.button.4');
 
         Quintal.onClick(this.market, function(){
 
@@ -71,8 +72,9 @@ var HomeState = {
                     }
                 }
             });
+		
 
-        /*
+        
 			var money = Quintal.points.eggs;
 
 			money += Quintal.points.fruits;
@@ -115,10 +117,10 @@ var HomeState = {
 					}
 				});
 			}
-        */
+        
 		});
 
-
+		*/
 
 		this.orchard.inputEnabled = true;
 		this.orchard.events.onInputDown.add(function(){
@@ -138,7 +140,7 @@ var HomeState = {
 		HeaderState.create.call(this);
 	},
     incrementClick: function( screen ){
-        if( this.showMarket ) this.showMarket = false;
+        //if( this.showMarket ) this.showMarket = false;
 
         Quintal.conditions[ Quintal.condition ][screen].clicks++;
         Quintal.totalClicks++;
@@ -146,11 +148,12 @@ var HomeState = {
         Quintal.conditionClicks[screen]++;
 
         this.selectOption(screen);
-
+		/*
         if( Quintal.totalClicks != 0 && Quintal.totalClicks % 3 == 0 ){
             this.showMarket = true;
 			alertify.message('Venda seus produtos no mercado!');
-		}
+		}*/
+
         if( Quintal.conditionClicks.total >= 10 ){
 
             var x = Quintal.conditionClicks.farm,
@@ -158,14 +161,14 @@ var HomeState = {
                 z = Quintal.conditionClicks.orchard,
                 t = Quintal.conditionClicks.total;
 
-            if( x/t >= 0.6 || y/t >= 0.6 || z/t >= 0.6 || x>= 10 || y >= 10 || z >= 10 ){
-                this.showMarket = true;
-				alertify.message('Venda seus produtos no mercado!');
+            if( x/t >= 0.7 || y/t >= 0.7 || z/t >= 0.7 || x>= 10 || y >= 10 || z >= 10 ){
+                //this.showMarket = true;
+				//alertify.message('Venda seus produtos no mercado!');
                 Quintal.conditionIndex += 1;
 
                 if( Quintal.coditionIndex >= Quintal.conditions.order.length ){
                     alertify.message("ACABOU!", "FIM");
-										return;
+					return;
                 }
 
                 var index = Quintal.conditionIndex;
@@ -180,10 +183,10 @@ var HomeState = {
 	update: function(){
 		HeaderState.update.call(this);
 
-        if( this.showMarket )
+        /*if( this.showMarket )
             this.market.visible = true;
         else
-            this.market.visible = false;
+            this.market.visible = false;*/
 	},
 	selectOption: function( name ){
 		game.state.start(name);

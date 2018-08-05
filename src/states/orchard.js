@@ -31,14 +31,7 @@ var OrchardState = {
 
         this.options = [];
 
-        this.combinations = [
-            [1,2,3], //laranja
-            [1,3,2], //rosa
-            [2,3,1], //roxa
-            [2,1,3], //vermelha
-            [3,1,2], //amarela
-            [3,2,1]  //verde
-        ];
+        this.combinations = [2,3,1]; //roxa
 
         this.colors = [
           'orange','pink','purple','red','yellow','green'
@@ -77,7 +70,7 @@ var OrchardState = {
                 self.options.push(1);
                 self.fruitOption = 1;
                 self.counter++;
-				alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
+				alertify.message("Você ganhou 10 pontos!");
                 self.showBackButton = false;
             }
 		});
@@ -87,7 +80,7 @@ var OrchardState = {
                 self.options.push(2);
                 self.treesOption = 1;
                 self.counter++;
-				alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
+				alertify.message("Você ganhou 10 pontos!");
                 self.showBackButton = false;
             }
 		});
@@ -98,7 +91,7 @@ var OrchardState = {
                 self.options.push(3);
                 self.compostOption = 1;
                 self.counter++;
-				alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
+				alertify.message("Você ganhou 10 pontos!");
                 self.showBackButton = false;
             }
         });

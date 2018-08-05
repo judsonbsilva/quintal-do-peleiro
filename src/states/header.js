@@ -1,67 +1,69 @@
 HeaderState = {
-  create: function(){
+  create: function () {
 
-    this.backButton = game.add.sprite(10,10,'header.back.button');
+    this.backButton = game.add.sprite(10, 10, 'header.back.button');
 
-    Quintal.onClick(this.backButton, function(){
+    Quintal.onClick(this.backButton, function () {
       game.state.start('home');
     });
 
-    if( !this.showBackButton )
+    if (!this.showBackButton)
       this.backButton.visible = false;
 
-    game.add.sprite(850,10,'header.money');
+    game.add.sprite(850, 10, 'header.money');
 
-    this.moneyPoints = game.add.text(880, 70, Quintal.points.money,  {
-			font: 'Bold 35px Arial',
-			fill: '#ffffff',
+    this.moneyPoints = game.add.text(880, 70, Quintal.points.money, {
+      font: 'Bold 35px Arial',
+      fill: '#ffffff',
 
-		}).setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
+    }).setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
 
-    game.add.sprite(750,10,'header.carrots');
+    game.add.sprite(750, 10, 'header.carrots');
 
     this.carrotPoints = game.add.text(780, 70, Quintal.points.carrots, {
-			font: 'Bold 35px Arial',
-			fill: '#ffffff',
+      font: 'Bold 35px Arial',
+      fill: '#ffffff',
 
-		}).setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
+    }).setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
 
-    game.add.sprite(650,10,'header.fruits');
+    game.add.sprite(650, 10, 'header.fruits');
 
-    this.fruitPoints = game.add.text(680, 70, Quintal.points.fruits,  {
-			font: 'Bold 35px Arial',
-			fill: '#ffffff',
+    this.fruitPoints = game.add.text(680, 70, Quintal.points.fruits, {
+      font: 'Bold 35px Arial',
+      fill: '#ffffff',
 
-		}).setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
+    }).setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
 
-    game.add.sprite(550,10,'header.eggs');
+    game.add.sprite(550, 10, 'header.eggs');
 
-    this.eggPoints = game.add.text(580, 70, Quintal.points.eggs,  {
-			font: 'Bold 35px Arial',
-			fill: '#ffffff',
+    this.eggPoints = game.add.text(580, 70, Quintal.points.eggs, {
+      font: 'Bold 35px Arial',
+      fill: '#ffffff',
 
-		}).setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
+    }).setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
 
     this.cronometer = false;
+    this.winner = false;
 
     this.timerImage = game.add.sprite(360, 100, 'timer');
     this.timerImage.animations.add('go');
     this.timerImage.animations.play('go', 5, true);
     this.timerImage.visible = false;
 
-    this.timeText = game.add.text(450, 400, this.time - this.timeCounted,  {
-			font: 'Bold 35px Arial',
-			fill: '#ffffff',
-		}).setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
+    this.timeText = game.add.text(450, 400, this.time - this.timeCounted, {
+      font: 'Bold 35px Arial',
+      fill: '#ffffff',
+    }).setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
 
     var self = this;
-    game.time.events.loop(Phaser.Timer.SECOND, function(){
-        HeaderState.updateCounter.call(self);
+
+    game.time.events.loop(Phaser.Timer.SECOND, function () {
+      HeaderState.updateCounter.call(self);
     }, this);
 
     game.add.text(900, 600, Quintal.condition, { font: 'Bold 12px Arial', fill: '#ffffff' });
   },
-  update: function(){
+  update: function () {
     this.fruitPoints.text = Quintal.points.fruits;
     this.eggPoints.text = Quintal.points.eggs;
     this.carrotPoints.text = Quintal.points.carrots;
@@ -69,59 +71,64 @@ HeaderState = {
 
     this.backButton.visible = this.showBackButton;
 
-    if( this.cronometer ){
+    if (this.cronometer) {
       this.timerImage.visible = true;
       this.timeText.visible = true;
     } else {
       this.timerImage.visible = false;
-      this.timeText.visible   = false;
+      this.timeText.visible = false;
     }
-    console.log(this.counter);
-	if( this.counter == 3 ){
-		this.counter = 0;
-		this.cronometer = true;
 
-        var self = this,
-            colorIndex = -1;
+    if (this.counter == 3) {
+      this.counter = 0;
+      this.cronometer = true;
 
-        console.log( "HEREEEE", this.combinations, this.options );
+      var self = this,
+        colorIndex = -1;
 
-        _.each(this.combinations, function( list, index ){
-            var isDiff = false;
-            _.each(list, function( number, i ){
-                if( number != self.options[i] )
-                    isDiff = true;
-            });
+      // Se a combinação vencedora for diferente das opções escolhidas
+      if( JSON.stringify(this.combinations) == JSON.stringify(this.options) ){
+        console.log('header.js > Estou aqui 2 ');
+        console.log(this.options, this.combinations);
 
-            if( !isDiff )
-                colorIndex = index;
-        });
-        var local = Quintal.sprites['basket.' + this.bonus+ '.' + this.colors[colorIndex]];
-        var image = "<br/><img src='assets/cestas/"+ local[1] + "'/>";
+        var local = Quintal.sprites['basket.' + this.bonus + '.' + this.colors[0]];
+        var image = "<br/><img src='assets/cestas/" + local[1] + "'/>";
 
         alertify.alert('Parabéns', '<h3>Você ganhou</h3>' + image);
-	}
+
+        this.winner = true;
+      } else {
+          console.log('header.js > Estou aqui 1 ');
+      }
+    }
   },
-  updateCounter: function(){
-    if( !this.cronometer ) return;
+  updateCounter: function () {
+    if (!this.cronometer) return;
 
     this.timeCounted++;
 
-    var condition = Quintal.conditions[ Quintal.condition ];
+    var condition = Quintal.conditions[Quintal.condition];
 
     var time = condition[game.state.current].time,
-        points = condition[game.state.current].points;
+      points = condition[game.state.current].points;
 
-    this.timeText.setText( time - this.timeCounted );
+    this.timeText.setText(time - this.timeCounted);
 
-  	if( this.timeCounted >= time ){
+    if (this.timeCounted >= time) {
       this.cronometer = false;
       this.showBackButton = true;
       this.timeCounted = 0;
-      Quintal.points[this.bonus] += points;
-      alertify.message('Você ganhou ' + points + '!');
 
+      if( this.winner ){
+        Quintal.points[this.bonus] += points;
+        Quintal.points.money += points;
+        alertify.alert('Parabéns', '<h3>Você ganhou R$' + points );
+        this.winner = false;
+      } else {
+        alertify.message('Você não ganhou nada!');
+      }
       this.countQuestions = this.fruitOption = this.compostOption = this.groundOption = this.plantOption = this.waterOption = this.dirtOption = this.ledOption = this.foodOption = 0;
+      game.state.start('home');
     }
   }
 }

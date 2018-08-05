@@ -69,41 +69,42 @@ Quintal = {
     conditionIndex: 0,
     condition: 'A',
     conditions: {
-        order: ['A','B','C','B','C','A','C','B','A'],
+        order: ['A','B','C','D'],
         A: {
-            garden: {
-                time: 60,
-                points: 60,
+            orchard: {
+                time: 20,
+				points: 40,
+                clicks: 0
+			},
+			garden: {
+                time: 20,
+                points: 40,
                 clicks: 0
             },
             farm: {
-                time: 60,
-                clicks: 0,
-                points: 120
-            },
-            orchard: {
-                time: 60,
-                clicks: 0,
-                points: 180
+                time: 20,
+				points: 40,
+                clicks: 0
             },
             carrots: 1,
             fruits: 1,
             eggs: 3
         },
         B: {
+			
+            orchard: {
+                time: 20,
+                points: 40,
+                clicks: 0
+            },
             garden: {
-                time: 60,
-                points: 120,
+                time: 40,
+                points: 80,
                 clicks: 0
             },
             farm: {
                 time: 60,
-                points: 180,
-                clicks: 0
-            },
-            orchard: {
-                time: 60,
-                points: 60,
+                points: 120,
                 clicks: 0
             },
             carrots: 1,
@@ -111,25 +112,47 @@ Quintal = {
             eggs: 1
         },
         C: {
+			orchard: {
+                time: 40,
+                points: 80,
+                clicks: 0
+            },
             garden: {
                 time: 60,
-                points: 180,
+                points: 120,
                 clicks: 0
             },
             farm: {
-                time: 60,
-                points: 60,
+                time: 20,
+                points: 40,
                 clicks: 0
             },
+            
+            carrots: 3,
+            fruits: 1,
+            eggs: 1
+		},
+		D: {
             orchard: {
                 time: 60,
                 points: 120,
                 clicks: 0
             },
+            garden: {
+                time: 20,
+                points: 40,
+                clicks: 0
+            },
+            farm: {
+                time: 40,
+                points: 80,
+                clicks: 0
+            },
             carrots: 3,
             fruits: 1,
             eggs: 1
-        }
+		},
+		
     },
 	sprites: {
 		'header.back.button': ['outros', 'voltar.png'],

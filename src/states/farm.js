@@ -42,14 +42,7 @@ var FarmState = {
 
 		this.options = [];
 
-        this.combinations = [
-            [1,2,3], //branca
-            [1,3,2], //azul
-            [2,3,1], //verde
-            [2,1,3], //rosa
-            [3,1,2], //laranja
-            [3,2,1]  //roxa
-        ];
+        this.combinations = [1,2,3]; //branca
 
         this.colors = [
           'white','blue','green','pink','orange','purple'
@@ -86,7 +79,7 @@ var FarmState = {
                 self.foodOption = 2;
                 self.showBackButton = false;
                 self.counter++;
-				alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
+				alertify.message("Você ganhou 10 pontos!");
             }
 	    });
 
@@ -96,7 +89,7 @@ var FarmState = {
                 self.ledOption = 2;
                 self.showBackButton = false;
                 self.counter++;
-                alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
+                alertify.message("Você ganhou 10 pontos!");
             }
 		});
 
@@ -106,7 +99,7 @@ var FarmState = {
 				self.dirtOption = 1;
 				self.showBackButton = false;
 				self.counter++;
-				alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
+				alertify.message("Você ganhou 10 pontos!");
             }
         });
 

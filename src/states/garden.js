@@ -41,14 +41,8 @@ var GardenState = {
 
     this.options = [];
 
-    this.combinations = [
-            [1,2,3], //laranja
-            [1,3,2], //verde
-            [2,3,1], //amarelo
-            [2,1,3], //preto
-            [3,1,2], //rosa
-            [3,2,1]  //azul
-    ];
+	this.combinations = [3,2,1];  //azul
+	
     this.colors = ['orange','green','yellow','black','pink','blue'];
 		this.timeCounted = 0;
 		this.points = 30;
@@ -81,7 +75,7 @@ var GardenState = {
                 self.plantOption = 2;
                 self.showBackButton = false;
                 self.counter++;
-								alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
+				alertify.message("Você ganhou 10 pontos!");
             }
 		});
 
@@ -92,7 +86,7 @@ var GardenState = {
                 self.groundOption = 1;
                 self.showBackButton = false;
                 self.counter++;
-								alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
+				alertify.message("Você ganhou 10 pontos!");
             }
 		});
 
@@ -102,7 +96,7 @@ var GardenState = {
                 self.waterOption = 1;
                 self.showBackButton = false;
                 self.counter++;
-								alertify.message("Você ganhou " + self.counter * 10 + " pontos!");
+				alertify.message("Você ganhou 10 pontos!");
             }
         });
 
